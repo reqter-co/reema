@@ -1,12 +1,9 @@
-import { FC } from "react";
 import SearchBox from "./components/SearchBox";
 import Categories from "./components/Categories";
 import { Wrapper, Section, Content, Title, Description } from "./styles";
 import useTranslation from "@Hooks/useTranslation";
 
-interface IProps {}
-
-const List: FC<IProps> = () => {
+const List = () => {
   const { direction } = useTranslation();
   return (
     <Wrapper

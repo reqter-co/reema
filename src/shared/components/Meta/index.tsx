@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import Head from "next/head";
-
 import { MetaTags } from "@Interfaces/meta-tags";
 
 type Props = {

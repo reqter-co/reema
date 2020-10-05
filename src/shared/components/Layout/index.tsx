@@ -1,9 +1,7 @@
 import React from "react";
 import Menu from "./Menu";
-// import Footer from "./Footer";
 import Meta from "@Shared/components/Meta";
 import { MetaTags } from "@Interfaces/meta-tags";
-// import { Modal } from "../Common/Modal";
 import { Main, Content } from "./styles";
 
 interface MainProps {

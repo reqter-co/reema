@@ -1,8 +1,6 @@
-import { FC } from "react";
 import Hero from "./Hero";
 
-interface IProps {}
-const HomeContent: FC<IProps> = () => {
+const HomeContent = () => {
   return <Hero />;
 };
 

@@ -6,7 +6,7 @@ import useTranslation from "@Hooks/useTranslation";
 import useClickOutside from "@Hooks/useClickOutside";
 
 const SearchBox = () => {
-  const searchBoxRef = useRef(null);
+  const searchBoxRef = useRef<HTMLDivElement>(null);
   const [isOpenSearchModal, toggleSearchModal] = useState(false);
   const [searchText, setSearchText] = useState("");
   const { direction } = useTranslation();
@@ -17,11 +17,11 @@ const SearchBox = () => {
     }
   }
 
-  useClickOutside(searchBoxRef,()=>{
+  useClickOutside(searchBoxRef, () => {
     if (isOpenSearchModal) {
       toggleSearchModal(false);
     }
-  })
+  });
 
   return (
     <div className="relative" ref={searchBoxRef}>

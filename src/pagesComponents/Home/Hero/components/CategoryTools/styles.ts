@@ -17,7 +17,7 @@ export const CloseIcon = styled.div`
   ${apply`text-4xl cursor-pointer`}
 `;
 export const ToolItem = styled.div`
-  ${apply` cursor-pointer mb-3`};
+  ${apply`cursor-pointer mb-3`};
   &:hover {
     ${apply`underline`};
   }

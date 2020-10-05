@@ -64,7 +64,7 @@ export const CategoriesWrapper = styled.div`
   animation: ${zoomInAnim} .2s linear;
 `;
 export const CategoryItemWrapper = styled.div`
-  ${apply` bg-white rounded-lg shadow text-center flex flex-col items-center justify-center cursor-pointer`};
+  ${apply`bg-white rounded-lg shadow text-center flex flex-col items-center justify-center cursor-pointer`};
   margin-inline-end: 15px;
   width: calc(25% - 15px);
   min-height: 120px;
@@ -73,7 +73,7 @@ export const CategoryItemWrapper = styled.div`
   }
 `;
 export const CategoryItemTitle = styled.h3`
-  ${apply` text-lg font-semibold mt-3`};
+  ${apply`text-lg font-semibold mt-3`};
 `;
 
 export const CategoryIcon = styled.div`

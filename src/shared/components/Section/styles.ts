@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  background: ${({
-    bgColor,
-    bgImage,
-  }: {
-    bgColor?: string;
-    bgImage?: string;
-  }) =>
+type Props = {
+  bgColor?: string;
+  bgImage?: string;
+};
+export const Wrapper = styled.div<Props>`
+  background: ${({ bgColor, bgImage }) =>
     bgImage ? `url(${bgImage})` : bgColor ? bgColor : theme`colors.white`};
   ${apply`py-20 bg-cover`}
 `;
