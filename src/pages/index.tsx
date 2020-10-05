@@ -6,7 +6,7 @@ import Content from "./../pagesComponents/Home";
 
 type Props = {};
 
-const Home: NextPage<Props, any> = (props: Props) => {
+const Home: NextPage<Props, any> = () => {
   return (
     <Layout metaTags={defaultMetaTags}>
       <Content />

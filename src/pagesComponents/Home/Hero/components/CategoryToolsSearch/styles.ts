@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-type IProps = {};
 export const Wrapper = styled.div`
   ${apply`absolute flex flex-col bg-white shadow rounded-lg mt-10 w-full`};
   top: 100px;
