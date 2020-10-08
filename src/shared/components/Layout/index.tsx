@@ -1,5 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
+import Footer from "./Footer";
 import Meta from "@Shared/components/Meta";
 import { MetaTags } from "@Interfaces/meta-tags";
 import { Main, Content } from "./styles";
@@ -13,7 +14,7 @@ const Layout: React.FC<MainProps> = ({ metaTags, children }): JSX.Element => {
       <Meta tags={metaTags} />
       <Menu />
       <Content>{children}</Content>
-      {/* <Footer /> */}
+      <Footer />
       {/* <Modal /> */}
     </Main>
   );

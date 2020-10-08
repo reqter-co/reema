@@ -1,7 +1,13 @@
 import Hero from "./Hero";
+import Highlight from "./Highlight";
 
 const HomeContent = () => {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <Highlight />
+    </>
+  );
 };
 
 export default HomeContent;

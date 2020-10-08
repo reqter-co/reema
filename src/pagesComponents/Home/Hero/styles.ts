@@ -3,7 +3,6 @@ const zoomInAnim = keyframes`
   from {
     transform: scale(0);
   }
-
   to {
     transform: scale(1);
   }
@@ -21,7 +20,7 @@ export const Wrapper = styled.div`
     ${direction === "ltr" ? "77deg" : "-77deg"},
     #f7f8fa 0%,
     #f7f8fa 63%,
-      transparent 63%
+    transparent 63%
     ),url(${img})`};
   background-size: 100%;
 `;
