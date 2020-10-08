@@ -6,7 +6,10 @@ import useTranslation from "@Hooks/useTranslation";
 import useClickOutside from "@Hooks/useClickOutside";
 import { Tool } from "@Interfaces/tool";
 
-const SearchBox = () => {
+type Props = {
+  onShowedToolsList: () => void;
+};
+const SearchBox = ({ onShowedToolsList }: Props) => {
   const searchBoxRef = useRef<HTMLDivElement>(null);
   const [isOpenSearchModal, toggleSearchModal] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -16,7 +19,9 @@ const SearchBox = () => {
   }
   function handleOnFocusInput(e: React.FormEvent<HTMLInputElement>) {
     if (!isOpenSearchModal) {
+      onShowedToolsList();
       toggleSearchModal(true);
+      setTimeout(() => {}, 1000);
     }
   }
 

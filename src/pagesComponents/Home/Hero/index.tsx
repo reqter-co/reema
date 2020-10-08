@@ -19,7 +19,6 @@ const List = () => {
             Sweden's most popular service for getting in touch with companies.
             711 857 have received help so far!
           </Description>
-          <SearchBox />
           <Categories />
         </Content>
       </Section>

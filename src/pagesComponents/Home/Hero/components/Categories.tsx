@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Category } from "@Interfaces/category";
+import SearchBox from "./SearchBox";
 import CategoryItem from "./CategoryItem";
 import CategoryTools from "./CategoryTools";
 import { CategoriesWrapper } from "../styles";
@@ -18,23 +19,33 @@ const Categories = () => {
   function handleCloseCategoryTools() {
     toggleToolsList(false);
   }
-  return isOpenToolsList ? (
-    <CategoryTools
-      category={selectedCategory}
-      onClose={handleCloseCategoryTools}
-    />
-  ) : (
-    <CategoriesWrapper>
-      {categories
-        ? categories.map((item) => (
-            <CategoryItem
-              key={item.id}
-              data={item}
-              onClickCategory={handleClickCategory}
-            />
-          ))
-        : null}
-    </CategoriesWrapper>
+  function handleShowedToolsList() {
+    if (isOpenToolsList) {
+      toggleToolsList(false);
+    }
+  }
+  return (
+    <>
+      <SearchBox onShowedToolsList={handleShowedToolsList} />
+      {isOpenToolsList ? (
+        <CategoryTools
+          category={selectedCategory}
+          onClose={handleCloseCategoryTools}
+        />
+      ) : (
+        <CategoriesWrapper>
+          {categories
+            ? categories.map((item) => (
+                <CategoryItem
+                  key={item.id}
+                  data={item}
+                  onClickCategory={handleClickCategory}
+                />
+              ))
+            : null}
+        </CategoriesWrapper>
+      )}
+    </>
   );
 };
 

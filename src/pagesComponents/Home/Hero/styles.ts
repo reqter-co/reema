@@ -60,7 +60,6 @@ export const SearchButton = styled.button`
 `;
 export const CategoriesWrapper = styled.div`
   ${apply`flex flex-wrap mt-10 w-full`};
-  animation: ${zoomInAnim} .2s linear;
 `;
 export const CategoryItemWrapper = styled.div`
   ${apply`bg-white rounded-lg shadow text-center flex flex-col items-center justify-center cursor-pointer`};
