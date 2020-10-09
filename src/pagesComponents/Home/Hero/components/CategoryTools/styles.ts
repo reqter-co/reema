@@ -2,6 +2,13 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   ${apply`flex flex-col bg-white shadow rounded-lg mt-10`}
+  ${tscreen`tab-land`} {
+    margin-inline-start: 30px;
+  }
+  ${tscreen`tab-port`} {
+    margin-inline-start: 0px;
+    ${apply`mx-10`}
+  }
 `;
 export const Header = styled.div`
   ${apply`flex justify-between items-center py-5 px-8 border-b border-gray-400`}

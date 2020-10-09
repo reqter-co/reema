@@ -5,10 +5,23 @@ export const Wrapper = styled.div`
 `;
 export const Container = styled.div`
   ${apply`py-16 flex items-center max-w-6xl m-auto`};
+  ${tscreen`tab-land`} {
+    ${apply`px-4`};
+  }
+  ${tscreen`tab-port`} {
+    ${apply`flex-col items-stretch`};
+  }
 `;
 export const Left = styled.div`
   ${apply`flex`};
   margin-inline-end: 100px;
+  ${tscreen`tab-land`} {
+    margin-inline-end: 50px;
+  }
+  ${tscreen`tab-port`} {
+    ${apply`mb-5 justify-center items-center`};
+    margin-inline-end: 0px;
+  }
 `;
 export const SocialIcon = styled.a`
   ${apply`rounded-full flex items-center justify-center bg-gray-900 text-3xl text-white cursor-pointer`};
@@ -26,14 +39,23 @@ export const SocialIcon = styled.a`
 `;
 export const Right = styled.div`
   ${apply`flex-1 flex justify-between items-center`};
+  ${tscreen`phone`} {
+    ${apply`flex-col items-stretch`}
+  }
 `;
 export const Column = styled.div`
   ${apply`flex flex-col`};
+  ${tscreen`phone`} {
+    ${apply`items-center`}
+  }
 `;
 export const Link = styled.a`
   ${apply`text-white mb-2 flex items-center cursor-pointer`};
   &:hover {
     ${apply`underline`};
+  }
+  ${tscreen`phone`} {
+    ${apply`mb-4`}
   }
 `;
 export const CompanyName = styled.div`

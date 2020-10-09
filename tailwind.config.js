@@ -1,9 +1,8 @@
-// [
-//   "./src/pagesComponents/**/*.{js,ts,jsx,tsx}",
-//   "./src/shared/components/**/*.{js,ts,jsx,tsx}",
-// ]
 module.exports = {
-  purge: false,
+  purge: [
+    "./src/pagesComponents/**/*.{js,ts,jsx,tsx}",
+    "./src/shared/components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     screens: {
       phone: { max: "37.5em" },

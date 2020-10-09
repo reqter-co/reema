@@ -1,4 +1,3 @@
-import SearchBox from "./components/SearchBox";
 import Categories from "./components/Categories";
 import { Wrapper, Section, Content, Title, Description } from "./styles";
 import useTranslation from "@Hooks/useTranslation";
@@ -8,7 +7,7 @@ const List = () => {
   return (
     <Wrapper
       img={
-        "https://www.moeshomecollection.com/wp-content/uploads/2019/10/FN-1039-05_50-940x940.jpg"
+        "https://www.mcarthurhomes.com/wp-content/uploads/2018/02/catalogo_Page_05_Page_04_Image_0001.jpg"
       }
       direction={direction}
     >

@@ -4,7 +4,6 @@ import { SearchWrapper, Input, SearchButton } from "../styles";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 import useTranslation from "@Hooks/useTranslation";
 import useClickOutside from "@Hooks/useClickOutside";
-import { Tool } from "@Interfaces/tool";
 
 type Props = {
   onShowedToolsList: () => void;
@@ -17,11 +16,10 @@ const SearchBox = ({ onShowedToolsList }: Props) => {
   function handleInputChanged(e: React.FormEvent<HTMLInputElement>) {
     setSearchText(e.currentTarget.value);
   }
-  function handleOnFocusInput(e: React.FormEvent<HTMLInputElement>) {
+  function handleOnFocusInput() {
     if (!isOpenSearchModal) {
       onShowedToolsList();
       toggleSearchModal(true);
-      setTimeout(() => {}, 1000);
     }
   }
 
@@ -31,7 +29,7 @@ const SearchBox = ({ onShowedToolsList }: Props) => {
       setSearchText("");
     }
   });
-  function handleClickedTools(tools: Tool) {
+  function handleClickedTools() {
     toggleSearchModal(false);
   }
 

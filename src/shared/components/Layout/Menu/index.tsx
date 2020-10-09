@@ -33,8 +33,8 @@ const HeaderMenu = (): JSX.Element => {
           <Logo>Reema</Logo>
           <Menu>
             <MenuItem>Menu</MenuItem>
-            <MenuItem>Login</MenuItem>
-            <MenuItem>Blog</MenuItem>
+            <MenuItem className="phone:hidden">Login</MenuItem>
+            <MenuItem className="phone:hidden">Blog</MenuItem>
           </Menu>
         </Content>
       </Wrapper>

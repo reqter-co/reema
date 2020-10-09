@@ -7,11 +7,17 @@ export const Title = styled.h1`
   ${apply`text-5xl text-gray-900 font-bold text-center`}
 `;
 export const Container = styled.div`
-  ${apply` flex justify-between mt-5`};
+  ${apply`flex justify-between mt-5`};
+  ${tscreen`phone`} {
+    ${apply`flex-col`}
+  }
 `;
 export const ItemWrapper = styled.div`
   ${apply`flex flex-col items-center text-center`};
   padding-inline-end: 30px;
+  ${tscreen`phone`} {
+    padding-inline-end: 0px;
+  }
 `;
 export const Icon = styled.div`
   max-width: 150px;
