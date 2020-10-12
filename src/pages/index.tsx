@@ -2,7 +2,7 @@ import React from "react";
 import { GetStaticProps, NextPage } from "next";
 import { defaultMetaTags } from "@Core/constants";
 import Layout from "@Shared/components/Layout";
-import Content from "./../pagesComponents/Home";
+import Content from "../pagesComponents/Home";
 import { getLandingData } from "@Core/api";
 
 interface IProps {}

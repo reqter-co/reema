@@ -6,11 +6,13 @@ import useTranslation from "@Hooks/useTranslation";
 import useClickOutside from "@Hooks/useClickOutside";
 import useGlobalState from "@Hooks/useGlobal/useGlobalState";
 import useDataPath from "@Hooks/useDataPath";
+import { useTranslation as ut } from "react-i18next";
 
 type Props = {
   onShowedToolsList: () => void;
 };
 const SearchBox = ({ onShowedToolsList }: Props) => {
+  const [t] = ut("details");
   const searchBoxRef = useRef<HTMLDivElement>(null);
   const [isOpenSearchModal, toggleSearchModal] = useState(false);
   const [searchText, setSearchText] = useState("");
@@ -41,7 +43,7 @@ const SearchBox = ({ onShowedToolsList }: Props) => {
     <div className="relative" ref={searchBoxRef}>
       <SearchWrapper>
         <Input
-          placeholder={getValue(landingPage, "herosearchplaceholder")}
+          placeholder={t("ssg_title")}
           value={searchText}
           onChange={handleInputChanged}
           onFocus={handleOnFocusInput}
