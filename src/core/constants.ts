@@ -13,3 +13,11 @@ export const defaultMetaTags: MetaTags = {
   title: "Reema",
   type: PageType.website,
 };
+
+export const clientid = "3f33b7b9-3826-475a-993e-c1b6c12b41bc";
+const baseUrl = "https://requester.reqter.com";
+const listLeanUrl = "/api/v1/lists/lean";
+export const urls = {
+  landing: baseUrl + listLeanUrl + "/5f8062c056b30d001a1fc56a",
+  token: baseUrl + "/api/v1/auth/token",
+};

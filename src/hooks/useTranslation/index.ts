@@ -1,12 +1,11 @@
-import { useRouter } from "next/router";
+import useGlobalState from "@Hooks/useGlobal/useGlobalState";
 import { i18n } from "../../../i18n";
-const useTranslationUtils = () => {
-  const { query } = useRouter();
-  const direction = i18n.dir(query?.lang as string);
-  
-
-
-  return { direction };
+const useTranslation = () => {
+  const { dir } = useGlobalState();
+  return {
+    direction: dir,
+    currentLang: i18n.language,
+  };
 };
 
-export default useTranslationUtils;
+export default useTranslation;

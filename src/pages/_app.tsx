@@ -1,9 +1,25 @@
+import { Provider } from "@Hooks/useGlobal";
 import "../styles/index.css";
 import { appWithTranslation } from "../../i18n";
 import type { AppProps } from "next/app";
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+interface IApp extends AppProps {
+  addProps: {
+    dir: string;
+    lang: string;
+  };
+}
+const MyApp = ({ Component, pageProps, addProps }: IApp) => {
+  return (
+    <Provider
+      initialDataFromServer={{
+        ...pageProps,
+        dir: addProps?.dir,
+      }}
+    >
+      <Component {...pageProps} />
+    </Provider>
+  );
 };
 
 export default appWithTranslation(MyApp);

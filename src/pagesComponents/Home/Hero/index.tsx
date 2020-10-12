@@ -1,9 +1,13 @@
 import Categories from "./components/Categories";
 import { Wrapper, Section, Content, Title, Description } from "./styles";
+import useGlobalState from "@Hooks/useGlobal/useGlobalState";
 import useTranslation from "@Hooks/useTranslation";
+import useDataPath from "@Hooks/useDataPath";
 
 const List = () => {
+  const { landingPage } = useGlobalState();
   const { direction } = useTranslation();
+  const { getValue } = useDataPath();
   return (
     <Wrapper
       img={
@@ -13,11 +17,8 @@ const List = () => {
     >
       <Section>
         <Content>
-          <Title>Get the job done By professionals</Title>
-          <Description>
-            Sweden's most popular service for getting in touch with companies.
-            711 857 have received help so far!
-          </Description>
+          <Title>{getValue(landingPage, "herotitle")}</Title>
+          <Description>{getValue(landingPage, "herodescription")}</Description>
           <Categories />
         </Content>
       </Section>
