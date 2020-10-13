@@ -1,16 +1,14 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-
 interface IDocumentProps {
   lang: string;
   dir: string;
 }
 export default class MyDocument extends Document<IDocumentProps> {
   static async getInitialProps(ctx: any) {
-    const { req } = ctx;
     const additionalProps = {
-      lang: req.language,
-      dir: req.i18n && req.i18n.dir(req.language),
+      lang: ctx.query.lang,
+      dir: ctx.query.lang === "fa" ? "rtl" : "ltr",
     };
 
     const sheet = new ServerStyleSheet();
@@ -19,8 +17,11 @@ export default class MyDocument extends Document<IDocumentProps> {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App: any) => (props: any) =>
-            sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App: any) => (props: any) => {
+            return sheet.collectStyles(
+              <App {...props} addProps={additionalProps} />
+            );
+          },
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -42,13 +43,8 @@ export default class MyDocument extends Document<IDocumentProps> {
     const { lang, dir } = this.props;
     return (
       <html lang={lang} dir={dir} prefix="og: http://ogp.me/ns#">
-        <Head>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-        </Head>
-        <body className="font-sans">
+        <Head />
+        <body>
           <Main />
           <NextScript />
         </body>

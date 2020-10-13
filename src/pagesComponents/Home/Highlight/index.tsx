@@ -1,9 +1,14 @@
+import useGlobalState from "@Hooks/useGlobal/useGlobalState";
+import useDataPath from "@Hooks/useDataPath";
 import { Wrapper, Title, Container } from "./styles";
 import Item from "./Item";
+
 const Highlights = () => {
+  const { landingPage } = useGlobalState();
+  const { getValue } = useDataPath();
   return (
     <Wrapper bgColor={theme`colors.white`}>
-      <Title>This is how it works</Title>
+      <Title>{getValue(landingPage, "infosectiontitle")}</Title>
       <Container>
         <Item
           icon={
@@ -260,8 +265,8 @@ const Highlights = () => {
               />
             </svg>
           }
-          title="Describe your project"
-          description="Enter what you need help with and we will match you with experienced companies."
+          title={getValue(landingPage, "firstinoftitle")}
+          description={getValue(landingPage, "firstinfodesc")}
         />
         <Item
           icon={
@@ -452,8 +457,8 @@ const Highlights = () => {
               />
             </svg>
           }
-          title="Compare companies"
-          description="Get quotes, see reviews, references and chat with companies for free"
+          title={getValue(landingPage, "secondinfotitle")}
+          description={getValue(landingPage, "secondinfodesc")}
         />
         <Item
           icon={
@@ -716,8 +721,8 @@ const Highlights = () => {
               <circle cx="972" cy="89" r="12" fill="#48bb78" opacity="0.1" />
             </svg>
           }
-          title="Start using tools!"
-          description="Choose a company and sit back while the pros do the work!"
+          title={getValue(landingPage, "thirdinfotitle")}
+          description={getValue(landingPage, "thirdinfodesc")}
         />
       </Container>
     </Wrapper>

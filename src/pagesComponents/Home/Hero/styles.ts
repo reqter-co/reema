@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 type IProps = {
   img: string;
   direction: string;
@@ -13,6 +12,7 @@ export const Wrapper = styled.div<IProps>`
     #f7f8fa 63%,
     transparent 63%
     ),url(${img})`};
+
   ${tscreen`tab-port`} {
     ${apply`bg-cover`};
     background-image: ${({ img }) => `url(${img})`};
