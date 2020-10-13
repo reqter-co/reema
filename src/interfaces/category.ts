@@ -1,7 +1,7 @@
-import { Tool } from "./tool";
-export type Category = {
-  id: string;
+export type ICategory = {
+  _id: string;
   name: string;
   icon?: any;
-  tools?: Tool[];
+  slug: string;
+  thumbnail: any;
 };

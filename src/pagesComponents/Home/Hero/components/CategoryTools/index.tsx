@@ -7,19 +7,21 @@ import {
   ToolItem,
 } from "./styles";
 import Icon from "@Shared/components/Icon";
-import { Category } from "@Interfaces/category";
+import { ICategory } from "@Interfaces/category";
 import useCategoryTools from "@Hooks/useCategoryTools";
+import useDataPath from "@Hooks/useDataPath";
 import { useMemo } from "react";
 
 interface IProps {
-  category: Category | undefined;
+  category: ICategory | undefined;
   onClose: () => void;
 }
 
 const CategoryTools = ({ category, onClose }: IProps) => {
+  const { getValue } = useDataPath();
   const { getCategoryToolsById } = useCategoryTools();
   const tools = useMemo(
-    () => (category ? getCategoryToolsById(category.id) : []),
+    () => (category ? getCategoryToolsById(category._id) : []),
     [category]
   );
   function handleClose() {
@@ -28,7 +30,7 @@ const CategoryTools = ({ category, onClose }: IProps) => {
   return (
     <Wrapper>
       <Header>
-        <CategoryTitle>{category?.name}</CategoryTitle>
+        <CategoryTitle>{getValue(category, "name")}</CategoryTitle>
         <CloseIcon onClick={handleClose}>
           <Icon name="close" />
         </CloseIcon>

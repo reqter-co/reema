@@ -1,17 +1,20 @@
 import { FC } from "react";
-import { Category } from "@Interfaces/category";
+import { ICategory } from "@Interfaces/category";
 import Icon from "@Shared/components/Icon";
 import {
   CategoryItemWrapper,
   CategoryItemTitle,
   CategoryIcon,
 } from "../styles";
+import useDataPath from "@Hooks/useDataPath";
 
 interface IProps {
-  data: Category;
-  onClickCategory: (category: Category) => void;
+  data: ICategory;
+  onClickCategory: (category: ICategory) => void;
 }
+
 const CategoryItem: FC<IProps> = ({ data, onClickCategory }) => {
+  const { getValue } = useDataPath();
   function handleClicked() {
     onClickCategory(data);
   }
@@ -20,7 +23,7 @@ const CategoryItem: FC<IProps> = ({ data, onClickCategory }) => {
       <CategoryIcon>
         <Icon name={data.icon} />
       </CategoryIcon>
-      <CategoryItemTitle>{data.name}</CategoryItemTitle>
+      <CategoryItemTitle>{getValue(data, "name")}</CategoryItemTitle>
     </CategoryItemWrapper>
   );
 };

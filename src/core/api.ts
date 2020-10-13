@@ -1,6 +1,8 @@
 import { get, post } from "@Utils/http";
 import { clientid, urls } from "@Core/constants";
 import { LandingPage } from "@Interfaces/landing";
+import { ILocale } from "@Interfaces/locale";
+import { ICategory } from "@Interfaces/category";
 //=======================================
 let token: string = "";
 const saveToken = (t: string) => {
@@ -40,5 +42,45 @@ const getLandingData = async () => {
   }
   return [];
 };
+const getAppLocales = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<ILocale[]>(urls.locales, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    return response.parsedBody;
+  }
+  return [];
+};
+const getCategories = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<ICategory[]>(urls.categories, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    return response.parsedBody;
+  }
+  return [];
+};
+const getAllData = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const [landingPageResponse, categoriesResponse] = await Promise.all([
+    getLandingData(),
+    getCategories(),
+  ]);
+  return { landingPageResponse, categoriesResponse };
+};
 
-export { getLandingData };
+export { getAppLocales, getAllData, getLandingData, getCategories };

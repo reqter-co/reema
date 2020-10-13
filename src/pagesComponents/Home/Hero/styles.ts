@@ -39,7 +39,7 @@ export const Content = styled.div`
 
 export const Title = styled.h1`
   ${apply`text-black font-semibold text-5xl text-center`};
-  ${tscreen`phone`} {
+  ${tscreen`tab-land`} {
     ${apply`text-4xl`};
   }
 `;
@@ -93,7 +93,7 @@ export const CategoriesWrapper = styled.div`
   }
 `;
 export const CategoryItemWrapper = styled.div`
-  ${apply`bg-white rounded-lg shadow text-center flex flex-wrap flex-col items-center justify-center cursor-pointer`};
+  ${apply`bg-white rounded-lg mb-4 shadow text-center flex flex-wrap flex-col items-center justify-center cursor-pointer`};
   margin-inline-end: 15px;
   width: calc(25% - 15px);
   min-height: 120px;

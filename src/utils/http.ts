@@ -8,7 +8,12 @@ interface HttpRequest extends RequestInit {
 async function http<T>(request: RequestInfo): Promise<HttpResponse<T>> {
   const response: HttpResponse<T> = await fetch(request);
   try {
-    response.parsedBody = await response.json();
+    const body = await response.json();
+    if (body.data) {
+      response.parsedBody = body.data;
+    } else {
+      response.parsedBody = body;
+    }
   } catch (ex) {}
 
   if (!response.ok) {

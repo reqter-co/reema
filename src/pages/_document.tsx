@@ -8,7 +8,7 @@ export default class MyDocument extends Document<IDocumentProps> {
   static async getInitialProps(ctx: any) {
     const additionalProps = {
       lang: ctx.query.lang,
-      dir: ctx.query.lang === "fa" ? "rtl" : "ltr",
+      dir: ctx.query.lang === "fa" || ctx.query.lang === "ar" ? "rtl" : "ltr",
     };
 
     const sheet = new ServerStyleSheet();
