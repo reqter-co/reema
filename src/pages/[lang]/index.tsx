@@ -18,7 +18,6 @@ const Home: NextPage<IProps> = () => {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const { landingPageResponse, categoriesResponse } = await getAllData();
-    console.log(categoriesResponse);
     return {
       props: {
         landingPage:

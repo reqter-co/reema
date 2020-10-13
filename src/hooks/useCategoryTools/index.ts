@@ -1,4 +1,3 @@
-import { data as tools } from "@Core/categoryTools";
 import useGlobalState from "@Hooks/useGlobal/useGlobalState";
 import { Tool } from "@Interfaces/tool";
 
