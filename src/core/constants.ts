@@ -20,4 +20,5 @@ const listLeanUrl = "/api/v1/lists/lean";
 export const urls = {
   landing: baseUrl + listLeanUrl + "/5f8062c056b30d001a1fc56a",
   token: baseUrl + "/api/v1/auth/token",
+  locales: baseUrl + "/api/v1/config/locales",
 };

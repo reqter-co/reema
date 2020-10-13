@@ -1,6 +1,7 @@
 import { get, post } from "@Utils/http";
 import { clientid, urls } from "@Core/constants";
 import { LandingPage } from "@Interfaces/landing";
+import { ILocale } from "@Interfaces/locale";
 //=======================================
 let token: string = "";
 const saveToken = (t: string) => {
@@ -40,5 +41,20 @@ const getLandingData = async () => {
   }
   return [];
 };
+const getAppLocales = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<ILocale[]>(urls.locales, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    return response.parsedBody;
+  }
+  return [];
+};
 
-export { getLandingData };
+export { getAppLocales, getLandingData };
