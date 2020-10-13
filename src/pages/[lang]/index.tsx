@@ -3,7 +3,7 @@ import { GetStaticProps, NextPage } from "next";
 import { defaultMetaTags } from "@Core/constants";
 import Layout from "@Shared/components/Layout";
 import Content from "../../pagesComponents/Home";
-import { getAppLocales, getLandingData } from "@Core/api";
+import { getAppLocales, getAllData } from "@Core/api";
 
 interface IProps {}
 
@@ -17,10 +17,15 @@ const Home: NextPage<IProps> = () => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const response = await getLandingData();
+    const { landingPageResponse, categoriesResponse } = await getAllData();
+    console.log(categoriesResponse);
     return {
       props: {
-        landingPage: response && response.length ? response[0] : null,
+        landingPage:
+          landingPageResponse && landingPageResponse.length
+            ? landingPageResponse[0]
+            : null,
+        categories: categoriesResponse || [],
       },
     };
   } catch (error) {
@@ -33,8 +38,10 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 export async function getStaticPaths() {
   const locales = await getAppLocales();
+  const langs =
+    locales && locales.length ? locales : [{ locale: "en" }, { locale: "fa" }];
   return {
-    paths: locales.map((item: any) => `/${item.locale}`),
+    paths: langs.map((item: any) => `/${item.locale}`),
     fallback: false,
   };
 }

@@ -11,19 +11,27 @@ import {
   FaLinkedin,
   FaPhone,
   FaEnvelope,
+  FaAudible,
+  FaGg,
+  FaBlackberry,
+  FaCloudsmith,
 } from "react-icons/fa";
 
 const icons: { [key in string]: any } = {
   time: <BsClock />,
   financial: <BsGraphUp />,
   legal: <BsLayoutWtf />,
-  numbers: <BsChatSquareQuote />,
+  tests: <BsChatSquareQuote />,
   close: <BsX />,
   instagram: <FaInstagram />,
   facebook: <FaFacebook />,
   linkedin: <FaLinkedin />,
   email: <FaEnvelope />,
   phone: <FaPhone />,
+  technology: <FaAudible />,
+  measure: <FaBlackberry />,
+  math: <FaCloudsmith />,
+  health: <FaGg />,
 };
 const Icon = ({ name = "" }) => {
   return icons[name.toLowerCase()] ? icons[name.toLowerCase()] : "";

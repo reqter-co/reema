@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Category } from "@Interfaces/category";
+import { ICategory } from "@Interfaces/category";
 import SearchBox from "./SearchBox";
 import CategoryItem from "./CategoryItem";
 import CategoryTools from "./CategoryTools";
@@ -8,11 +8,11 @@ import useCategoryTools from "@Hooks/useCategoryTools";
 
 const Categories = () => {
   const [isOpenToolsList, toggleToolsList] = useState(false);
-  const [selectedCategory, setCategory] = useState<Category>();
+  const [selectedCategory, setCategory] = useState<ICategory>();
   const { getCategories } = useCategoryTools();
   const categories = useMemo(() => getCategories(), []);
 
-  function handleClickCategory(category: Category) {
+  function handleClickCategory(category: ICategory) {
     setCategory(category);
     toggleToolsList(true);
   }
@@ -35,9 +35,9 @@ const Categories = () => {
       ) : (
         <CategoriesWrapper>
           {categories
-            ? categories.map((item) => (
+            ? categories.map((item: ICategory) => (
                 <CategoryItem
-                  key={item.id}
+                  key={item._id}
                   data={item}
                   onClickCategory={handleClickCategory}
                 />
