@@ -1,6 +1,7 @@
-import useTranslation from "@Hooks/useTranslation";
+import { useRouter } from "next/router";
 const useDataPath = () => {
-  const { currentLang } = useTranslation();
+  const { query } = useRouter();
+  const currentLang = query.lang as string;
   const getValue = (
     object: any,
     key: string,

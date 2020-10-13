@@ -1,7 +1,5 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-import i18n from "i18next";
-import { LocaleScript } from "i18nextnext";
 interface IDocumentProps {
   lang: string;
   dir: string;
@@ -9,8 +7,8 @@ interface IDocumentProps {
 export default class MyDocument extends Document<IDocumentProps> {
   static async getInitialProps(ctx: any) {
     const additionalProps = {
-      lang: i18n.language,
-      dir: i18n.dir(i18n.language),
+      lang: ctx.query.lang,
+      dir: ctx.query.lang === "fa" ? "rtl" : "ltr",
     };
 
     const sheet = new ServerStyleSheet();
@@ -45,14 +43,8 @@ export default class MyDocument extends Document<IDocumentProps> {
     const { lang, dir } = this.props;
     return (
       <html lang={lang} dir={dir} prefix="og: http://ogp.me/ns#">
-        <Head>
-          <LocaleScript />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-        </Head>
-        <body className="font-sans">
+        <Head />
+        <body>
           <Main />
           <NextScript />
         </body>

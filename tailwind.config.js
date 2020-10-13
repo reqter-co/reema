@@ -3,7 +3,7 @@
 //   "./src/shared/components/**/*.{js,ts,jsx,tsx}",
 // ]
 module.exports = {
-  purge:[],
+  purge: [],
   theme: {
     screens: {
       phone: { max: "37.5em" },
@@ -13,8 +13,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: [
-          "Lato",
+        vazir: [
+          "Vazir",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",

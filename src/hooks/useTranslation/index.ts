@@ -1,9 +1,9 @@
 import useGlobalState from "@Hooks/useGlobal/useGlobalState";
 const useTranslation = () => {
-  const { dir } = useGlobalState();
+  const { dir, lang } = useGlobalState();
   return {
     direction: dir,
-    currentLang: "en",
+    currentLang: lang,
   };
 };
 
