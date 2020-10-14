@@ -1,3 +1,3 @@
 export interface LandingPage {
-  [key: string]: string;
+  [key: string]: unknown;
 }

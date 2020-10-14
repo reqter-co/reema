@@ -8,7 +8,7 @@ import useCategoryTools from "@Hooks/useCategoryTools";
 
 const Categories = () => {
   const [isOpenToolsList, toggleToolsList] = useState(false);
-  const [selectedCategory, setCategory] = useState<ICategory>();
+  const [selectedCategory, setCategory] = useState<ICategory >();
   const { getCategories } = useCategoryTools();
   const categories = useMemo(() => getCategories(), []);
 
@@ -27,7 +27,7 @@ const Categories = () => {
   return (
     <>
       <SearchBox onShowedToolsList={handleShowedToolsList} />
-      {isOpenToolsList ? (
+      {isOpenToolsList && selectedCategory ? (
         <CategoryTools
           category={selectedCategory}
           onClose={handleCloseCategoryTools}

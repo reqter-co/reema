@@ -17,7 +17,11 @@ const Home: NextPage<IProps> = () => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { landingPageResponse, categoriesResponse } = await getAllData();
+    const {
+      landingPageResponse,
+      categoriesResponse,
+      toolsResponse,
+    } = await getAllData();
     return {
       props: {
         landingPage:
@@ -25,6 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
             ? landingPageResponse[0]
             : null,
         categories: categoriesResponse || [],
+        tools: toolsResponse || [],
       },
     };
   } catch (error) {

@@ -1,25 +1,27 @@
 import { useMemo } from "react";
 import { Wrapper, Content, ToolItem } from "./styles";
 import useCategoryTools from "@Hooks/useCategoryTools";
-import { Tool } from "@Interfaces/tool";
+import useDataPath from "@Hooks/useDataPath";
+import { ITools } from "@Interfaces/tools";
 
 interface IProps {
   searchText: string;
-  onItemClicked: (item: Tool) => void;
+  onItemClicked: (item: ITools) => void;
 }
 
 const CategoryToolsSearch = ({ searchText, onItemClicked }: IProps) => {
-  const { getCategoryToolsByName } = useCategoryTools();
-  const tools = useMemo(() => getCategoryToolsByName(searchText), [searchText]);
-  function handleClicked(item: Tool) {
+  const { getValue } = useDataPath();
+  const { getToolsByCategoryName } = useCategoryTools();
+  const tools = useMemo(() => getToolsByCategoryName(searchText), [searchText]);
+  function handleClicked(item: ITools) {
     onItemClicked(item);
   }
   return (
     <Wrapper>
       <Content>
         {tools.map((item) => (
-          <ToolItem key={item.id} onClick={() => handleClicked(item)}>
-            {item.title}
+          <ToolItem key={item._id} onClick={() => handleClicked(item)}>
+            {getValue(item, "name")}
           </ToolItem>
         ))}
       </Content>
