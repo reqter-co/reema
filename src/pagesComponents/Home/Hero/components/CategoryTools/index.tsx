@@ -13,15 +13,15 @@ import useDataPath from "@Hooks/useDataPath";
 import { useMemo } from "react";
 
 interface IProps {
-  category: ICategory | undefined;
+  category: ICategory;
   onClose: () => void;
 }
 
 const CategoryTools = ({ category, onClose }: IProps) => {
   const { getValue } = useDataPath();
-  const { getCategoryToolsById } = useCategoryTools();
+  const { getToolsByCategoryId } = useCategoryTools();
   const tools = useMemo(
-    () => (category ? getCategoryToolsById(category._id) : []),
+    () => (category ? getToolsByCategoryId(category._id) : []),
     [category]
   );
   function handleClose() {
@@ -37,7 +37,7 @@ const CategoryTools = ({ category, onClose }: IProps) => {
       </Header>
       <Content>
         {tools.map((item) => (
-          <ToolItem key={item.id}>{item.title}</ToolItem>
+          <ToolItem key={item._id}>{getValue(item, "name")}</ToolItem>
         ))}
       </Content>
     </Wrapper>

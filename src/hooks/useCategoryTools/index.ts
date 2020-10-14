@@ -1,19 +1,27 @@
 import useGlobalState from "@Hooks/useGlobal/useGlobalState";
-import { Tool } from "@Interfaces/tool";
+import useDataPath from "@Hooks/useDataPath";
+import { ITools } from "@Interfaces/tools";
 
 const useCategoryTools = () => {
-  const { categories } = useGlobalState();
+  const { categories, tools } = useGlobalState();
+  const { getValue } = useDataPath();
   const getCategories = () => {
     return categories;
   };
-  const getCategoryToolsById = (categoryId: string): Tool[] => {
-    return categoryId ? [] : [];
+  const getToolsByCategoryId = (categoryId: string): ITools[] => {
+    return tools
+      ? tools.filter((item: ITools) => item.categoryid._id === categoryId)
+      : [];
   };
-  const getCategoryToolsByName = (searchText: string): Tool[] => {
-    const data = searchText ? [] : [];
-    return data;
+  const getToolsByCategoryName = (searchText: string): ITools[] => {
+    return tools
+      ? tools.filter((item: ITools) => {
+          const name = getValue(item, "name") as string;
+          return name?.toLowerCase().includes(searchText.toLowerCase());
+        })
+      : [];
   };
-  return { getCategories, getCategoryToolsById, getCategoryToolsByName };
+  return { getCategories, getToolsByCategoryId, getToolsByCategoryName };
 };
 
 export default useCategoryTools;

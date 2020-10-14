@@ -22,4 +22,5 @@ export const urls = {
   token: baseUrl + "/api/v1/auth/token",
   locales: baseUrl + "/api/v1/config/locales",
   categories: baseUrl + listLeanUrl + "/5e858a10f0356f001334ba30",
+  tools: baseUrl + listLeanUrl + "/5f85885c56b30d001a1fc5b8",
 };

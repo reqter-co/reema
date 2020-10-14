@@ -3,6 +3,7 @@ import { clientid, urls } from "@Core/constants";
 import { LandingPage } from "@Interfaces/landing";
 import { ILocale } from "@Interfaces/locale";
 import { ICategory } from "@Interfaces/category";
+import { ITools } from "@Interfaces/tools";
 //=======================================
 let token: string = "";
 const saveToken = (t: string) => {
@@ -72,15 +73,31 @@ const getCategories = async () => {
   }
   return [];
 };
+const getTools = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<ITools[]>(urls.tools, {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    return response.parsedBody;
+  }
+  return [];
+};
 const getAllData = async () => {
   if (!token) {
     await getToken();
   }
-  const [landingPageResponse, categoriesResponse] = await Promise.all([
-    getLandingData(),
-    getCategories(),
-  ]);
-  return { landingPageResponse, categoriesResponse };
+  const [
+    landingPageResponse,
+    categoriesResponse,
+    toolsResponse,
+  ] = await Promise.all([getLandingData(), getCategories(), getTools()]);
+  return { landingPageResponse, categoriesResponse, toolsResponse };
 };
 
-export { getAppLocales, getAllData, getLandingData, getCategories };
+export { getAppLocales, getAllData, getLandingData, getCategories, getTools };
