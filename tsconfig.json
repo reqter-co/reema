@@ -26,6 +26,7 @@
       "@Interfaces/*": ["./src/interfaces/*"],
       "@Core/*": ["./src/core/*"],
       "@Shared/*": ["./src/shared/*"],
+      "@Contexts/*": ["./src/contexts/*"],
     }
   },
   "exclude": ["node_modules"],

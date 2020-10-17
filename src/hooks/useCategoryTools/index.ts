@@ -1,9 +1,9 @@
-import useGlobalState from "@Hooks/useGlobal/useGlobalState";
+import useLanding from "@Hooks/useLanding";
 import useDataPath from "@Hooks/useDataPath";
 import { ITools } from "@Interfaces/tools";
 
 const useCategoryTools = () => {
-  const { categories, tools } = useGlobalState();
+  const { categories, tools } = useLanding();
   const { getValue } = useDataPath();
   const getCategories = () => {
     return categories;

@@ -1,11 +1,11 @@
 import Categories from "./components/Categories";
 import { Wrapper, Section, Content, Title, Description } from "./styles";
-import useGlobalState from "@Hooks/useGlobal/useGlobalState";
+import useLanding from "@Hooks/useLanding";
 import useTranslation from "@Hooks/useTranslation";
 import useDataPath from "@Hooks/useDataPath";
 
 const List = () => {
-  const { landingPage } = useGlobalState();
+  const { landingPage } = useLanding();
   const { direction } = useTranslation();
   const { getValue } = useDataPath();
   return (

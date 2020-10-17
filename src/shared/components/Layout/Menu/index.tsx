@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "@Shared/components/Link";
 import { Wrapper, Content, Logo, Menu, MenuItem } from "./styles";
-import useGlobalState from "@Hooks/useGlobal/useGlobalState";
 import useDataPath from "@Hooks/useDataPath";
+import { IHeader } from "@Interfaces/header";
 
-const HeaderMenu = (): JSX.Element => {
-  const { landingPage } = useGlobalState();
+interface IProps {
+  data: IHeader;
+}
+
+const HeaderMenu = ({ data }: IProps): JSX.Element => {
   const { getValue } = useDataPath();
   const [isSticky, setSticky] = useState<boolean>(false);
   const router = useRouter();
@@ -23,7 +27,7 @@ const HeaderMenu = (): JSX.Element => {
   }, []);
 
   const checkIsTransparent = (): boolean => {
-    return router.pathname === "/";
+    return router.asPath === `/${router.query.lang}`;
   };
 
   return (
@@ -34,14 +38,14 @@ const HeaderMenu = (): JSX.Element => {
         isTransparent={checkIsTransparent()}
       >
         <Content>
-          <Logo>Reema</Logo>
+          <Logo>{getValue(data, "logotitle")}</Logo>
           <Menu>
-            <MenuItem>{getValue(landingPage, "headermenu")}</MenuItem>
+            <MenuItem>{getValue(data, "contactuslinktitle")}</MenuItem>
             <MenuItem className="phone:hidden">
-              {getValue(landingPage, "headerlogin")}
+              <Link href="/login">{getValue(data, "loginlinktitle")}</Link>
             </MenuItem>
             <MenuItem className="phone:hidden">
-              {getValue(landingPage, "headerblogtext")}
+              {getValue(data, "bloglinktitle")}
             </MenuItem>
           </Menu>
         </Content>

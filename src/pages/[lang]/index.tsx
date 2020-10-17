@@ -2,15 +2,34 @@ import React from "react";
 import { GetStaticProps, NextPage } from "next";
 import { defaultMetaTags } from "@Core/constants";
 import Layout from "@Shared/components/Layout";
-import Content from "../../pagesComponents/Home";
-import { getAppLocales, getAllData } from "@Core/api";
+import Content from "../../components/Home";
+import { getAppLocales, getLandingPageData } from "@Core/api";
+import { LandingProvider } from "@Contexts/landing/landing.provider";
 
-interface IProps {}
+interface IProps {
+  headerData: any;
+  footerData: any;
+  landingPage: any;
+  categories: any;
+  tools: any;
+}
 
-const Home: NextPage<IProps> = () => {
+const Home: NextPage<IProps, any> = ({
+  headerData,
+  footerData,
+  landingPage,
+  categories,
+  tools,
+}) => {
   return (
-    <Layout metaTags={defaultMetaTags}>
-      <Content />
+    <Layout
+      metaTags={defaultMetaTags}
+      footerData={footerData}
+      headerData={headerData}
+    >
+      <LandingProvider data={{ landingPage, categories, tools }}>
+        <Content />
+      </LandingProvider>
     </Layout>
   );
 };
@@ -18,16 +37,17 @@ const Home: NextPage<IProps> = () => {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const {
+      headerData,
+      footerData,
       landingPageResponse,
       categoriesResponse,
       toolsResponse,
-    } = await getAllData();
+    } = await getLandingPageData();
     return {
       props: {
-        landingPage:
-          landingPageResponse && landingPageResponse.length
-            ? landingPageResponse[0]
-            : null,
+        headerData,
+        footerData,
+        landingPage: landingPageResponse,
         categories: categoriesResponse || [],
         tools: toolsResponse || [],
       },

@@ -1,13 +1,20 @@
 import { get, post } from "@Utils/http";
 import { clientid, urls } from "@Core/constants";
 import { LandingPage } from "@Interfaces/landing";
+import { ILogin } from "@Interfaces/login";
 import { ILocale } from "@Interfaces/locale";
 import { ICategory } from "@Interfaces/category";
 import { ITools } from "@Interfaces/tools";
+import { IHeader } from "@Interfaces/header";
+import { IFooter } from "@Interfaces/footer";
 //=======================================
 let token: string = "";
+let result: any = {};
 const saveToken = (t: string) => {
   token = t;
+};
+const saveResult = (key: string, value: any) => {
+  result[key] = value;
 };
 export const getToken = async () => {
   const response = await post<{ access_token: string }>(
@@ -27,6 +34,46 @@ export const getToken = async () => {
   }
   return null;
 };
+const getHeaderData = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<IHeader[]>(urls.header, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    const header =
+      response.parsedBody && response.parsedBody.length
+        ? response.parsedBody[0]
+        : {};
+    return header;
+  }
+  return [];
+};
+const getFooterData = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<IFooter[]>(urls.footer, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    const footer =
+      response.parsedBody && response.parsedBody.length
+        ? response.parsedBody[0]
+        : {};
+    return footer;
+  }
+  return {};
+};
 const getLandingData = async () => {
   if (!token) {
     await getToken();
@@ -39,11 +86,18 @@ const getLandingData = async () => {
     },
   });
   if (response && response.parsedBody) {
-    return response.parsedBody;
+    const landing =
+      response.parsedBody && response.parsedBody.length
+        ? response.parsedBody[0]
+        : {};
+    return landing;
   }
   return [];
 };
 const getAppLocales = async () => {
+  if (result && result["locales"]) {
+    return result["locales"];
+  }
   if (!token) {
     await getToken();
   }
@@ -54,6 +108,7 @@ const getAppLocales = async () => {
     },
   });
   if (response && response.parsedBody) {
+    saveResult("locales", response.parsedBody);
     return response.parsedBody;
   }
   return [];
@@ -88,16 +143,53 @@ const getTools = async () => {
   }
   return [];
 };
-const getAllData = async () => {
+const getLandingPageData = async () => {
   if (!token) {
     await getToken();
   }
   const [
+    headerData,
+    footerData,
     landingPageResponse,
     categoriesResponse,
     toolsResponse,
-  ] = await Promise.all([getLandingData(), getCategories(), getTools()]);
-  return { landingPageResponse, categoriesResponse, toolsResponse };
+  ] = await Promise.all([
+    getHeaderData(),
+    getFooterData(),
+    getLandingData(),
+    getCategories(),
+    getTools(),
+  ]);
+  return {
+    headerData,
+    footerData,
+    landingPageResponse,
+    categoriesResponse,
+    toolsResponse,
+  };
+};
+const getLoginPageData = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<ILogin[]>(urls.login, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    return response.parsedBody;
+  }
+  return [];
 };
 
-export { getAppLocales, getAllData, getLandingData, getCategories, getTools };
+export {
+  getAppLocales,
+  getLandingPageData,
+  getLandingData,
+  getCategories,
+  getTools,
+  getLoginPageData,
+};

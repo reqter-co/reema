@@ -1,10 +1,10 @@
-import useGlobalState from "@Hooks/useGlobal/useGlobalState";
+import useLanding from "@Hooks/useLanding";
 import useDataPath from "@Hooks/useDataPath";
 import { Wrapper, Title, Container } from "./styles";
 import Item from "./Item";
 
 const Highlights = () => {
-  const { landingPage } = useGlobalState();
+  const { landingPage } = useLanding();
   const { getValue } = useDataPath();
   return (
     <Wrapper bgColor={theme`colors.white`}>

@@ -1,4 +1,3 @@
-import useGlobalState from "@Hooks/useGlobal/useGlobalState";
 import useDataPath from "@Hooks/useDataPath";
 import {
   Wrapper,
@@ -12,24 +11,28 @@ import {
   Logo,
 } from "./styles";
 import Icon from "@Shared/components/Icon";
-const Footer = () => {
-  const { landingPage } = useGlobalState();
+import { IFooter } from "@Interfaces/footer";
+type Props = {
+  data: IFooter;
+};
+
+const Footer = ({ data }: Props) => {
   const { getValue } = useDataPath();
   return (
     <Wrapper>
       <Container>
         <Left>
           <SocialIcon
-            href={getValue(landingPage, "linkedinlink")}
+            href={getValue(data, "linkedinlink")}
             target="_blank"
           >
             <Icon name="linkedin" />
           </SocialIcon>
-          <SocialIcon href={getValue(landingPage, "fblink")} target="_blank">
+          <SocialIcon href={getValue(data, "fblink")} target="_blank">
             <Icon name="facebook" />
           </SocialIcon>
           <SocialIcon
-            href={getValue(landingPage, "instagramlink")}
+            href={getValue(data, "instagramlink")}
             target="_blank"
           >
             <Icon name="instagram" />
@@ -38,52 +41,52 @@ const Footer = () => {
         <Right>
           <Column>
             <Link
-              href={getValue(landingPage, "footerlink1url")}
+              href={getValue(data, "footerlink1url")}
               target="_blank"
             >
-              {getValue(landingPage, "footerlink1title")}
+              {getValue(data, "footerlink1title")}
             </Link>
             <Link
-              href={getValue(landingPage, "footerlink2url")}
+              href={getValue(data, "footerlink2url")}
               target="_blank"
             >
-              {getValue(landingPage, "footerlink2title")}
+              {getValue(data, "footerlink2title")}
             </Link>
             <Link
-              href={getValue(landingPage, "footerlink3url")}
+              href={getValue(data, "footerlink3url")}
               target="_blank"
             >
-              {getValue(landingPage, "footerlink3title")}
+              {getValue(data, "footerlink3title")}
             </Link>
           </Column>
           <Column>
-            <Link href={getValue(landingPage, "footerlink4url")}>
-              {getValue(landingPage, "footerlink4title")}
+            <Link href={getValue(data, "footerlink4url")}>
+              {getValue(data, "footerlink4title")}
             </Link>
-            <Link href={getValue(landingPage, "footerlink5url")}>
-              {getValue(landingPage, "footerlink5title")}
+            <Link href={getValue(data, "link5url")}>
+              {getValue(data, "link5title")}
             </Link>
-            <Link href={getValue(landingPage, "footerlink6url")}>
-              {getValue(landingPage, "footerlink6title")}
+            <Link href={getValue(data, "link6url")}>
+              {getValue(data, "link6title")}
             </Link>
           </Column>
           <Column>
-            <CompanyName>{getValue(landingPage, "companyname")}</CompanyName>
-            <Link href={`mailto:${getValue(landingPage, "companyemail")}`}>
+            <CompanyName>{getValue(data, "companyname")}</CompanyName>
+            <Link href={`mailto:${getValue(data, "companyemail")}`}>
               <Icon name="email" />
               <span className="mx-2">
-                {getValue(landingPage, "companyemail")}
+                {getValue(data, "companyemail")}
               </span>
             </Link>
-            <Link href={`tel:${getValue(landingPage, "copmanyphone")}`}>
+            <Link href={`tel:${getValue(data, "copmanyphone")}`}>
               <Icon name="phone" />
               <span className="mx-2">
-                {getValue(landingPage, "copmanyphone")}
+                {getValue(data, "copmanyphone")}
               </span>
             </Link>
           </Column>
           <Column>
-            <Logo>Reema</Logo>
+            <Logo>{getValue(data, "logotitle")}</Logo>
           </Column>
         </Right>
       </Container>

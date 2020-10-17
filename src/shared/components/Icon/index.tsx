@@ -15,6 +15,7 @@ import {
   FaGg,
   FaBlackberry,
   FaCloudsmith,
+  FaGoogle,
 } from "react-icons/fa";
 
 const icons: { [key in string]: any } = {
@@ -24,6 +25,7 @@ const icons: { [key in string]: any } = {
   tests: <BsChatSquareQuote />,
   close: <BsX />,
   instagram: <FaInstagram />,
+  google: <FaGoogle />,
   facebook: <FaFacebook />,
   linkedin: <FaLinkedin />,
   email: <FaEnvelope />,

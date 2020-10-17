@@ -1,9 +1,9 @@
-import useGlobalState from "@Hooks/useGlobal/useGlobalState";
+import { useRouter } from "next/router";
 const useTranslation = () => {
-  const { dir, lang } = useGlobalState();
+  const { query } = useRouter();
   return {
-    direction: dir,
-    currentLang: lang,
+    direction: query.lang === "fa" || query.lang === "ar" ? "rtl" : "ltr",
+    currentLang: query.lang,
   };
 };
 

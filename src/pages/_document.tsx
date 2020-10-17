@@ -43,7 +43,12 @@ export default class MyDocument extends Document<IDocumentProps> {
     const { lang, dir } = this.props;
     return (
       <html lang={lang} dir={dir} prefix="og: http://ogp.me/ns#">
-        <Head />
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

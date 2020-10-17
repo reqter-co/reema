@@ -1,22 +1,17 @@
-import React, { useReducer } from "react";
-import reducer, { initialData, AppContextInterface } from "./reducer";
-
-export const GlobalContextState = React.createContext();
-const StateProvider = GlobalContextState.Provider;
-export const GlobalContextDispatch = React.createContext();
-const DispatchProvider = GlobalContextState.Provider;
-/////////////
-
-export const Provider = ({ children, initialDataFromServer }) => {
-  const [state, dispatch] = useReducer(reducer, {
-    ...initialData,
-    ...initialDataFromServer,
-  });
+import { useRef } from "react";
+import useGlobalState from "./useGlobalState";
+import { Provider } from "./provider";
+const Index = ({ children, initialDataFromServer }) => {
+  const data = useRef({ ...initialDataFromServer });
   return (
-    <GlobalContextState.Provider value={state}>
-      <GlobalContextDispatch.Provider value={dispatch}>
-        {children}
-      </GlobalContextDispatch.Provider>
-    </GlobalContextState.Provider>
+    <Provider
+      initialDataFromServer={{
+        ...initialDataFromServer,
+      }}
+    >
+      {children}
+    </Provider>
   );
 };
+
+export default Index;

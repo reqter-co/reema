@@ -4,7 +4,7 @@ import { SearchWrapper, Input, SearchButton } from "../styles";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 import useTranslation from "@Hooks/useTranslation";
 import useClickOutside from "@Hooks/useClickOutside";
-import useGlobalState from "@Hooks/useGlobal/useGlobalState";
+import useLanding from "@Hooks/useLanding";
 import useDataPath from "@Hooks/useDataPath";
 
 type Props = {
@@ -15,7 +15,7 @@ const SearchBox = ({ onShowedToolsList }: Props) => {
   const [isOpenSearchModal, toggleSearchModal] = useState(false);
   const [searchText, setSearchText] = useState("");
   const { direction } = useTranslation();
-  const { landingPage } = useGlobalState();
+  const { landingPage } = useLanding();
   const { getValue } = useDataPath();
 
   function handleInputChanged(e: React.FormEvent<HTMLInputElement>) {
