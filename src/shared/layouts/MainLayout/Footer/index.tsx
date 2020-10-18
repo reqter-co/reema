@@ -17,22 +17,22 @@ type Props = {
 };
 
 const Footer = ({ data }: Props) => {
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
   return (
     <Wrapper>
       <Container>
         <Left>
           <SocialIcon
-            href={getValue(data, "linkedinlink")}
+            href={getKeyValue(data, "linkedinlink")}
             target="_blank"
           >
             <Icon name="linkedin" />
           </SocialIcon>
-          <SocialIcon href={getValue(data, "fblink")} target="_blank">
+          <SocialIcon href={getKeyValue(data, "fblink")} target="_blank">
             <Icon name="facebook" />
           </SocialIcon>
           <SocialIcon
-            href={getValue(data, "instagramlink")}
+            href={getKeyValue(data, "instagramlink")}
             target="_blank"
           >
             <Icon name="instagram" />
@@ -41,52 +41,52 @@ const Footer = ({ data }: Props) => {
         <Right>
           <Column>
             <Link
-              href={getValue(data, "footerlink1url")}
+              href={getKeyValue(data, "footerlink1url")}
               target="_blank"
             >
-              {getValue(data, "footerlink1title")}
+              {getKeyValue(data, "footerlink1title")}
             </Link>
             <Link
-              href={getValue(data, "footerlink2url")}
+              href={getKeyValue(data, "footerlink2url")}
               target="_blank"
             >
-              {getValue(data, "footerlink2title")}
+              {getKeyValue(data, "footerlink2title")}
             </Link>
             <Link
-              href={getValue(data, "footerlink3url")}
+              href={getKeyValue(data, "footerlink3url")}
               target="_blank"
             >
-              {getValue(data, "footerlink3title")}
+              {getKeyValue(data, "footerlink3title")}
             </Link>
           </Column>
           <Column>
-            <Link href={getValue(data, "footerlink4url")}>
-              {getValue(data, "footerlink4title")}
+            <Link href={getKeyValue(data, "footerlink4url")}>
+              {getKeyValue(data, "footerlink4title")}
             </Link>
-            <Link href={getValue(data, "link5url")}>
-              {getValue(data, "link5title")}
+            <Link href={getKeyValue(data, "link5url")}>
+              {getKeyValue(data, "link5title")}
             </Link>
-            <Link href={getValue(data, "link6url")}>
-              {getValue(data, "link6title")}
+            <Link href={getKeyValue(data, "link6url")}>
+              {getKeyValue(data, "link6title")}
             </Link>
           </Column>
           <Column>
-            <CompanyName>{getValue(data, "companyname")}</CompanyName>
-            <Link href={`mailto:${getValue(data, "companyemail")}`}>
+            <CompanyName>{getKeyValue(data, "companyname")}</CompanyName>
+            <Link href={`mailto:${getKeyValue(data, "companyemail")}`}>
               <Icon name="email" />
               <span className="mx-2">
-                {getValue(data, "companyemail")}
+                {getKeyValue(data, "companyemail")}
               </span>
             </Link>
-            <Link href={`tel:${getValue(data, "copmanyphone")}`}>
+            <Link href={`tel:${getKeyValue(data, "copmanyphone")}`}>
               <Icon name="phone" />
               <span className="mx-2">
-                {getValue(data, "copmanyphone")}
+                {getKeyValue(data, "copmanyphone")}
               </span>
             </Link>
           </Column>
           <Column>
-            <Logo>{getValue(data, "logotitle")}</Logo>
+            <Logo>{getKeyValue(data, "logotitle")}</Logo>
           </Column>
         </Right>
       </Container>

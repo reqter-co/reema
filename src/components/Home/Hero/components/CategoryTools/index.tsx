@@ -18,7 +18,7 @@ interface IProps {
 }
 
 const CategoryTools = ({ category, onClose }: IProps) => {
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
   const { getToolsByCategoryId } = useCategoryTools();
   const tools = useMemo(
     () => (category ? getToolsByCategoryId(category._id) : []),
@@ -30,14 +30,14 @@ const CategoryTools = ({ category, onClose }: IProps) => {
   return (
     <Wrapper>
       <Header>
-        <CategoryTitle>{getValue(category, "name")}</CategoryTitle>
+        <CategoryTitle>{getKeyValue(category, "name")}</CategoryTitle>
         <CloseIcon onClick={handleClose}>
           <Icon name="close" />
         </CloseIcon>
       </Header>
       <Content>
         {tools.map((item) => (
-          <ToolItem key={item._id}>{getValue(item, "name")}</ToolItem>
+          <ToolItem key={item._id}>{getKeyValue(item, "name")}</ToolItem>
         ))}
       </Content>
     </Wrapper>

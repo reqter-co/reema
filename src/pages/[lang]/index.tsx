@@ -1,7 +1,7 @@
 import React from "react";
 import { GetStaticProps, NextPage } from "next";
 import { defaultMetaTags } from "@Core/constants";
-import Layout from "@Shared/components/Layout";
+import Layout from "@Shared/layouts/MainLayout";
 import Content from "../../components/Home";
 import { getAppLocales, getLandingPageData } from "@Core/api";
 import { LandingProvider } from "@Contexts/landing/landing.provider";
@@ -51,6 +51,7 @@ export const getStaticProps: GetStaticProps = async () => {
         categories: categoriesResponse || [],
         tools: toolsResponse || [],
       },
+      revalidate: 60,
     };
   } catch (error) {
     return {
@@ -66,7 +67,7 @@ export async function getStaticPaths() {
     locales && locales.length ? locales : [{ locale: "en" }, { locale: "fa" }];
   return {
     paths: langs.map((item: any) => `/${item.locale}`),
-    fallback: false,
+    fallback: true,
   };
 }
 

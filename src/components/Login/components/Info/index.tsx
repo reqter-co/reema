@@ -1,6 +1,7 @@
 import { Wrapper, Title, Description, Image } from "./styles";
 import { ILogin } from "@Interfaces/login";
 import useDataPath from "@Hooks/useDataPath";
+import useMediaUtils from "@Hooks/useMediaUtils";
 
 type Props = {
   data: ILogin;
@@ -8,12 +9,15 @@ type Props = {
 
 const LoginInfo = ({ data }: Props) => {
   const loginPage = data;
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
+  const { getMediaValue } = useMediaUtils();
   return (
     <Wrapper>
-      <Title>{getValue(loginPage, "infotitle")}</Title>
-      <Description>{getValue(loginPage, "infodescripton")}</Description>
-      <Image src="https://img.icons8.com/clouds/2x/apple-calculator.png" />
+      <Title>{getKeyValue(loginPage, "infotitle")}</Title>
+      <Description>{getKeyValue(loginPage, "infodescripton")}</Description>
+      <Image
+        src={getMediaValue(getKeyValue(loginPage, "infoimage"), "image")}
+      />
     </Wrapper>
   );
 };

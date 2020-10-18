@@ -5,10 +5,10 @@ import Item from "./Item";
 
 const Highlights = () => {
   const { landingPage } = useLanding();
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
   return (
     <Wrapper bgColor={theme`colors.white`}>
-      <Title>{getValue(landingPage, "infosectiontitle")}</Title>
+      <Title>{getKeyValue(landingPage, "infosectiontitle")}</Title>
       <Container>
         <Item
           icon={
@@ -265,8 +265,8 @@ const Highlights = () => {
               />
             </svg>
           }
-          title={getValue(landingPage, "firstinoftitle")}
-          description={getValue(landingPage, "firstinfodesc")}
+          title={getKeyValue(landingPage, "firstinoftitle")}
+          description={getKeyValue(landingPage, "firstinfodesc")}
         />
         <Item
           icon={
@@ -457,8 +457,8 @@ const Highlights = () => {
               />
             </svg>
           }
-          title={getValue(landingPage, "secondinfotitle")}
-          description={getValue(landingPage, "secondinfodesc")}
+          title={getKeyValue(landingPage, "secondinfotitle")}
+          description={getKeyValue(landingPage, "secondinfodesc")}
         />
         <Item
           icon={
@@ -721,8 +721,8 @@ const Highlights = () => {
               <circle cx="972" cy="89" r="12" fill="#48bb78" opacity="0.1" />
             </svg>
           }
-          title={getValue(landingPage, "thirdinfotitle")}
-          description={getValue(landingPage, "thirdinfodesc")}
+          title={getKeyValue(landingPage, "thirdinfotitle")}
+          description={getKeyValue(landingPage, "thirdinfodesc")}
         />
       </Container>
     </Wrapper>

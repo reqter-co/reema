@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const CategoryToolsSearch = ({ searchText, onItemClicked }: IProps) => {
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
   const { getToolsByCategoryName } = useCategoryTools();
   const tools = useMemo(() => getToolsByCategoryName(searchText), [searchText]);
   function handleClicked(item: ITools) {
@@ -21,7 +21,7 @@ const CategoryToolsSearch = ({ searchText, onItemClicked }: IProps) => {
       <Content>
         {tools.map((item) => (
           <ToolItem key={item._id} onClick={() => handleClicked(item)}>
-            {getValue(item, "name")}
+            {getKeyValue(item, "name")}
           </ToolItem>
         ))}
       </Content>

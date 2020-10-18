@@ -3,7 +3,7 @@ const useTranslation = () => {
   const { query } = useRouter();
   return {
     direction: query.lang === "fa" || query.lang === "ar" ? "rtl" : "ltr",
-    currentLang: query.lang,
+    currentLang: query.lang as string,
   };
 };
 

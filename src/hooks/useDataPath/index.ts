@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 const useDataPath = () => {
   const { query } = useRouter();
   const currentLang = query.lang as string;
-  // function getValue<T extends object, U extends string & keyof T>(
+  // function getKeyValue<T extends object, U extends string & keyof T>(
   //   object: T,
   //   key: U,
   //   defaultValue: string | number = ""
   // ) {
-  function getValue(
+  function getKeyValue(
     object: any,
     key: string,
     defaultValue: string | number = ""
@@ -41,7 +41,7 @@ const useDataPath = () => {
     return r;
   }
   return {
-    getValue,
+    getKeyValue,
   };
 };
 

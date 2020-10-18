@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const HeaderMenu = ({ data }: IProps): JSX.Element => {
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
   const [isSticky, setSticky] = useState<boolean>(false);
   const router = useRouter();
 
@@ -38,14 +38,14 @@ const HeaderMenu = ({ data }: IProps): JSX.Element => {
         isTransparent={checkIsTransparent()}
       >
         <Content>
-          <Logo>{getValue(data, "logotitle")}</Logo>
+          <Logo>{getKeyValue(data, "logotitle")}</Logo>
           <Menu>
-            <MenuItem>{getValue(data, "contactuslinktitle")}</MenuItem>
             <MenuItem className="phone:hidden">
-              <Link href="/login">{getValue(data, "loginlinktitle")}</Link>
+              <Link href="/login">{getKeyValue(data, "loginlinktitle")}</Link>
             </MenuItem>
+            <MenuItem>{getKeyValue(data, "contactuslinktitle")}</MenuItem>
             <MenuItem className="phone:hidden">
-              {getValue(data, "bloglinktitle")}
+              {getKeyValue(data, "bloglinktitle")}
             </MenuItem>
           </Menu>
         </Content>

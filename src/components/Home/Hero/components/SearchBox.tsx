@@ -16,7 +16,7 @@ const SearchBox = ({ onShowedToolsList }: Props) => {
   const [searchText, setSearchText] = useState("");
   const { direction } = useTranslation();
   const { landingPage } = useLanding();
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
 
   function handleInputChanged(e: React.FormEvent<HTMLInputElement>) {
     setSearchText(e.currentTarget.value);
@@ -41,7 +41,7 @@ const SearchBox = ({ onShowedToolsList }: Props) => {
     <div className="relative" ref={searchBoxRef}>
       <SearchWrapper>
         <Input
-          placeholder={getValue(landingPage, "herosearchplaceholder")}
+          placeholder={getKeyValue(landingPage, "herosearchplaceholder")}
           value={searchText}
           onChange={handleInputChanged}
           onFocus={handleOnFocusInput}

@@ -24,24 +24,24 @@ type Props = {
 
 const LoginForm = ({ data }: Props) => {
   const loginPage = data;
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
   return (
     <Wrapper>
       <Content>
-        <Title>{getValue(loginPage, "formtitle")}</Title>
-        <Description>{getValue(loginPage, "formdescription")}</Description>
+        <Title>{getKeyValue(loginPage, "formtitle")}</Title>
+        <Description>{getKeyValue(loginPage, "formdescription")}</Description>
         <Input
           autoFocus
-          placeholder={getValue(loginPage, "emailplaceholder")}
+          placeholder={getKeyValue(loginPage, "emailplaceholder")}
         />
-        <Input placeholder={getValue(loginPage, "passwordplaceholder")} />
+        <Input placeholder={getKeyValue(loginPage, "passwordplaceholder")} />
         <div>
           <ForgotPassword>
-            <Link href="/signup">{getValue(loginPage, "forgotpasstext")}</Link>
+            <Link href="/signup">{getKeyValue(loginPage, "forgotpasstext")}</Link>
           </ForgotPassword>
         </div>
-        <Submit>{getValue(loginPage, "submittext")}</Submit>
-        <TextLine>{getValue(loginPage, "socialboxtitle")}</TextLine>
+        <Submit>{getKeyValue(loginPage, "submittext")}</Submit>
+        <TextLine>{getKeyValue(loginPage, "socialboxtitle")}</TextLine>
         <SocialButtons>
           <Button>
             <Icon name="google" />
@@ -51,9 +51,9 @@ const LoginForm = ({ data }: Props) => {
           </Button>
         </SocialButtons>
         <SignupRow>
-          <SignupText>{getValue(loginPage, "signuptext")}</SignupText>
+          <SignupText>{getKeyValue(loginPage, "signuptext")}</SignupText>
           <SignupLinkText>
-            <Link href="/signup">{getValue(loginPage, "signuplinktext")}</Link>
+            <Link href="/signup">{getKeyValue(loginPage, "signuplinktext")}</Link>
           </SignupLinkText>
         </SignupRow>
       </Content>

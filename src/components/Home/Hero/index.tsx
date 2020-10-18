@@ -3,22 +3,26 @@ import { Wrapper, Section, Content, Title, Description } from "./styles";
 import useLanding from "@Hooks/useLanding";
 import useTranslation from "@Hooks/useTranslation";
 import useDataPath from "@Hooks/useDataPath";
+import useMediaUtils from "@Hooks/useMediaUtils";
 
 const List = () => {
+  
   const { landingPage } = useLanding();
   const { direction } = useTranslation();
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
+  const { getMediaValue } = useMediaUtils();
+
   return (
     <Wrapper
-      img={
-        "https://www.mcarthurhomes.com/wp-content/uploads/2018/02/catalogo_Page_05_Page_04_Image_0001.jpg"
-      }
+      img={getMediaValue(getKeyValue(landingPage, "heroimage"), "image")}
       direction={direction}
     >
       <Section>
         <Content>
-          <Title>{getValue(landingPage, "herotitle")}</Title>
-          <Description>{getValue(landingPage, "herodescription")}</Description>
+          <Title>{getKeyValue(landingPage, "herotitle")}</Title>
+          <Description>
+            {getKeyValue(landingPage, "herodescription")}
+          </Description>
           <Categories />
         </Content>
       </Section>

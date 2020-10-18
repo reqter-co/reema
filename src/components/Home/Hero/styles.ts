@@ -93,7 +93,7 @@ export const CategoriesWrapper = styled.div`
   }
 `;
 export const CategoryItemWrapper = styled.div`
-  ${apply`bg-white rounded-lg mb-4 shadow text-center flex flex-wrap flex-col items-center justify-center cursor-pointer`};
+  ${apply`bg-white rounded-lg mb-3 shadow text-center flex flex-wrap flex-col items-center justify-center cursor-pointer`};
   margin-inline-end: 15px;
   width: calc(25% - 15px);
   min-height: 120px;

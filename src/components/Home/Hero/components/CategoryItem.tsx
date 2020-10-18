@@ -14,7 +14,7 @@ interface IProps {
 }
 
 const CategoryItem: FC<IProps> = ({ data, onClickCategory }) => {
-  const { getValue } = useDataPath();
+  const { getKeyValue } = useDataPath();
   function handleClicked() {
     onClickCategory(data);
   }
@@ -23,7 +23,7 @@ const CategoryItem: FC<IProps> = ({ data, onClickCategory }) => {
       <CategoryIcon>
         <Icon name={data.icon} />
       </CategoryIcon>
-      <CategoryItemTitle>{getValue(data, "name")}</CategoryItemTitle>
+      <CategoryItemTitle>{getKeyValue(data, "name")}</CategoryItemTitle>
     </CategoryItemWrapper>
   );
 };
