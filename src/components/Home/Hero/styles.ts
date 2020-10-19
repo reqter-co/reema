@@ -101,8 +101,10 @@ export const CategoryItemWrapper = styled.div`
     ${apply`shadow-lg`};
   }
   ${tscreen`phone`} {
+    min-height: 100px;
+    margin-inline-end: 5px;
     ${apply`mb-4`};
-    width: calc(50% - 15px);
+    width: calc(33.33% - 5px);
   }
 `;
 export const CategoryItemTitle = styled.h3`

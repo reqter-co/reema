@@ -13,10 +13,10 @@ export const Container = styled.div`
   }
 `;
 export const ItemWrapper = styled.div`
-  ${apply`flex flex-col items-center text-center`};
+  ${apply`flex-1 flex flex-col items-center text-center`};
   padding-inline-end: 30px;
   ${tscreen`phone`} {
-    padding-inline-end: 0px;
+    padding: 0 10px;
   }
 `;
 export const Icon = styled.div`
@@ -27,8 +27,8 @@ export const Icon = styled.div`
   }
 `;
 export const ItemTitle = styled.h2`
-  ${apply`text-2xl text-gray-800 font-semibold`}
+  ${apply`text-2xl text-gray-800 font-semibold`};
 `;
 export const Description = styled.h3`
-  ${apply`text-gray-700  mt-4`}
+  ${apply`text-gray-700 text-base mt-4`}
 `;

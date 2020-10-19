@@ -10,7 +10,6 @@ import {
   Content,
   Title,
   Description,
-  ForgotPassword,
   Submit,
   TextLine,
   SocialButtons,

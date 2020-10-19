@@ -20,9 +20,6 @@ export const Title = styled.h1`
 export const Description = styled.h3`
   ${apply`text-gray-700 mb-10`}
 `;
-export const ForgotPassword = styled.div`
-  ${apply`text-gray-900 text-sm`}
-`;
 export const Submit = styled.button`
   ${apply`bg-secondary-color text-white py-3 rounded mt-5 text-lg`};
   &:hover {
