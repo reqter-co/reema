@@ -4,7 +4,7 @@ import Input from "@Shared/components/Form/Input";
 import Icon from "@Shared/components/Icon";
 import Link from "@Shared/components/Link";
 import useDataPath from "@Hooks/useDataPath";
-import { ILogin } from "@Interfaces/login";
+import { ISignUpPage } from "@Interfaces/signupPage";
 import { emailPattern } from "@Shared/helper/patterns";
 import {
   Content,
@@ -21,31 +21,41 @@ import {
 } from "./styles";
 
 type Props = {
-  data: ILogin;
+  data: ISignUpPage;
 };
 type IFormProps = {
   email: string;
   password: string;
+  fullname: string;
 };
 
 const LoginForm = ({ data }: Props) => {
-  const loginPage = data;
+  const signupPage = data;
   const { push } = useRouter();
   const { register, errors, handleSubmit } = useForm<IFormProps>();
   const { getKeyValue } = useDataPath();
 
-  const onSubmit = ({ email, password }: IFormProps) => {
-    console.log(email, password);
+  const onSubmit = ({ fullname, email, password }: IFormProps) => {
+    console.log(fullname, email, password);
     push("/home");
   };
   return (
     <Content onSubmit={handleSubmit(onSubmit)}>
-      <Title>{getKeyValue(loginPage, "formtitle")}</Title>
-      <Description>{getKeyValue(loginPage, "formdescription")}</Description>
+      <Title>{getKeyValue(signupPage, "formtitle")}</Title>
+      <Description>{getKeyValue(signupPage, "formdescription")}</Description>
+      <Input
+        type="text"
+        autoFocus
+        placeholder={getKeyValue(signupPage, "fullnameplaceholder")}
+        name="fullname"
+        ref={register({
+          required: true,
+        })}
+        hasError={errors.fullname ? true : false}
+      />
       <Input
         type="email"
-        autoFocus
-        placeholder={getKeyValue(loginPage, "emailplaceholder")}
+        placeholder={getKeyValue(signupPage, "emailplaceholder")}
         name="email"
         ref={register({
           required: true,
@@ -54,7 +64,7 @@ const LoginForm = ({ data }: Props) => {
         hasError={errors.email ? true : false}
       />
       <Input
-        placeholder={getKeyValue(loginPage, "passwordplaceholder")}
+        placeholder={getKeyValue(signupPage, "passwordplaceholder")}
         name="password"
         ref={register({
           required: true,
@@ -62,13 +72,8 @@ const LoginForm = ({ data }: Props) => {
         })}
         hasError={errors.password ? true : false}
       />
-      <div>
-        <ForgotPassword>
-          <Link href="/signup">{getKeyValue(loginPage, "forgotpasstext")}</Link>
-        </ForgotPassword>
-      </div>
-      <Submit>{getKeyValue(loginPage, "submittext")}</Submit>
-      <TextLine>{getKeyValue(loginPage, "socialboxtitle")}</TextLine>
+      <Submit>{getKeyValue(signupPage, "submittext")}</Submit>
+      <TextLine>{getKeyValue(signupPage, "socialboxtitle")}</TextLine>
       <SocialButtons>
         <Button>
           <Icon name="google" />
@@ -78,9 +83,9 @@ const LoginForm = ({ data }: Props) => {
         </Button>
       </SocialButtons>
       <SignupRow>
-        <SignupText>{getKeyValue(loginPage, "signuptext")}</SignupText>
+        <SignupText>{getKeyValue(signupPage, "logintext")}</SignupText>
         <SignupLinkText>
-          <Link href="/signup">{getKeyValue(loginPage, "signuplinktext")}</Link>
+          <Link href="/login">{getKeyValue(signupPage, "loginlinktext")}</Link>
         </SignupLinkText>
       </SignupRow>
     </Content>

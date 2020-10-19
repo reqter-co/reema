@@ -2,6 +2,7 @@ import { get, post } from "@Utils/http";
 import { clientid, urls } from "@Core/constants";
 import { LandingPage } from "@Interfaces/landing";
 import { ILogin } from "@Interfaces/login";
+import { ISignUpPage } from "@Interfaces/signupPage";
 import { ILocale } from "@Interfaces/locale";
 import { ICategory } from "@Interfaces/category";
 import { ITools } from "@Interfaces/tools";
@@ -180,7 +181,31 @@ const getLoginPageData = async () => {
     },
   });
   if (response && response.parsedBody) {
-    return response.parsedBody;
+    const obj =
+      response.parsedBody && response.parsedBody.length
+        ? response.parsedBody[0]
+        : {};
+    return obj;
+  }
+  return [];
+};
+const getSignUpPageData = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<ISignUpPage[]>(urls.signUpPage, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    const obj =
+      response.parsedBody && response.parsedBody.length
+        ? response.parsedBody[0]
+        : {};
+    return obj;
   }
   return [];
 };
@@ -192,4 +217,5 @@ export {
   getCategories,
   getTools,
   getLoginPageData,
+  getSignUpPageData,
 };
