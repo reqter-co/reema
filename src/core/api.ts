@@ -210,6 +210,19 @@ const getSignUpPageData = async () => {
   return [];
 };
 
+const getProfilePageData = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const [headerData, footerData] = await Promise.all([
+    getHeaderData(),
+    getFooterData(),
+  ]);
+  return {
+    headerData,
+    footerData,
+  };
+};
 export {
   getAppLocales,
   getLandingPageData,
@@ -218,4 +231,5 @@ export {
   getTools,
   getLoginPageData,
   getSignUpPageData,
+  getProfilePageData,
 };

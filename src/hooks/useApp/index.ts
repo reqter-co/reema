@@ -1,13 +1,5 @@
-import { useLandingState } from "@Contexts/landing/landing.provider";
-const useLanding = () => {
-  const landingPage = useLandingState("landingPage");
-  const categories = useLandingState("categories");
-  const tools = useLandingState("tools");
-  return {
-    landingPage,
-    categories,
-    tools,
-  };
+const useApp = () => {
+  return {};
 };
 
-export default useLanding;
+export default useApp;

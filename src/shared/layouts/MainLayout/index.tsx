@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
-import Footer from "./Footer";
+import Footer from "@Shared/components/Footer";
 import Meta from "@Shared/components/Meta";
 import { MetaTags } from "@Interfaces/meta-tags";
 import { IHeader } from "@Interfaces/header";

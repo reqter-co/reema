@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import useRouter from "@Hooks/useRouter";
+import useAuth from "@Hooks/useAuth";
 import Input from "@Shared/components/Form/Input";
 import Icon from "@Shared/components/Icon";
 import Link from "@Shared/components/Link";
@@ -30,13 +30,13 @@ type IFormProps = {
 
 const LoginForm = ({ data }: Props) => {
   const loginPage = data;
-  const { push } = useRouter();
+  const { handleLoginSuccess } = useAuth();
   const { register, errors, handleSubmit } = useForm<IFormProps>();
   const { getKeyValue } = useDataPath();
 
   const onSubmit = ({ email, password }: IFormProps) => {
     console.log(email, password);
-    push("/home");
+    handleLoginSuccess("11-aa-22");
   };
   return (
     <Content onSubmit={handleSubmit(onSubmit)}>
