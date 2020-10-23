@@ -1,4 +1,4 @@
-const isBrowser = typeof window !== "undefined";
+// const isBrowser = typeof window !== "undefined";
 export const INITIAL_STATE = {
   // isAuthenticated: isBrowser && !!localStorage.getItem("reema_access_token"),
   isAuthenticated: false,

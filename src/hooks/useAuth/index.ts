@@ -1,17 +1,19 @@
+import Cookies from "js-cookie";
 import { useAuthState, useAuthDispatch } from "@Contexts/auth/auth.provider";
 import useRouter from "@Hooks/useRouter";
 import { mutate } from "swr";
 
 const useAuth = () => {
   const dispatch = useAuthDispatch();
-  const { push, query } = useRouter();
+  const { push } = useRouter();
   const isAuthenticated = useAuthState("isAuthenticated");
   const isLoggedOut = useAuthState("isLoggedOut");
   const redirectPage = useAuthState("redirectPage");
   const isRedirected = useAuthState("isRedirected");
 
   const handleLoginSuccess = (token: string) => {
-    document.cookie = "swr-test-token=swr;";
+    console.log(token);
+    Cookies.set("reema_access_token", "swr");
     if (redirectPage) {
       mutate("api_user", null);
       push(redirectPage);
@@ -21,7 +23,7 @@ const useAuth = () => {
     dispatch({ type: "LOGIN_SUCCESS" });
   };
   const logout = () => {
-    document.cookie = "swr-test-token=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    Cookies.remove("reema_access_token");
     dispatch({ type: "LOGOUT" });
   };
   const setRedirectPage = (pageName: string) => {

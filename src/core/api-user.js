@@ -1,9 +1,10 @@
+import Cookies from "js-cookie";
 // mock the user api
 const getUser = async () => {
   // sleep 500
   await new Promise((res) => setTimeout(res, 500));
-
-  if (document.cookie.includes("swr-test-token=swr")) {
+  const token = Cookies.get("reema_access_token");
+  if (token) {
     // authorized
     return {
       name: "Saeed Padyab",

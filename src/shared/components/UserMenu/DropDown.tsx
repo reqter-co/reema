@@ -1,10 +1,8 @@
-import { useEffect, useRef } from "react";
+import {  useRef } from "react";
 import { mutate } from "swr";
 import { MenuWrapper, MenuIcon, MenuItem } from "./styles";
-import useDataPath from "@Hooks/useDataPath";
 import useTranslation from "@Hooks/useTranslation";
 import useClickOutside from "@Hooks/useClickOutside";
-import useUser from "@Hooks/useUser";
 import useRouter from "@Hooks/useRouter";
 import useAuth from "@Hooks/useAuth";
 import Icon from "@Shared/components/Icon";

@@ -14,7 +14,7 @@ interface IProps {
 
 const HeaderMenu = ({ data }: IProps): JSX.Element => {
   const { isAuthenticated } = useAuth();
-  const { user, loading } = useUser();
+  const { user } = useUser();
   const { getKeyValue } = useDataPath();
   const [isSticky, setSticky] = useState<boolean>(false);
   const router = useRouter();

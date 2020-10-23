@@ -1,6 +1,8 @@
 // [
-//   "./src/pagesComponents/**/*.{js,ts,jsx,tsx}",
+//   "./src/components/**/*.{js,ts,jsx,tsx}",
 //   "./src/shared/components/**/*.{js,ts,jsx,tsx}",
+//   "./src/shared/layouts/**/*.{js,ts,jsx,tsx}",
+//   "./src/styles/*.{js,ts,jsx,tsx,css}",
 // ]
 module.exports = {
   purge: [],

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useUser from "@Hooks/useUser";
 import useRouter from "@Hooks/useRouter";
 import useAuth from "@Hooks/useAuth";

@@ -1,9 +1,4 @@
 import styled from "styled-components";
-type Props = {
-  isSticky?: boolean;
-  isTransparent?: boolean;
-  selected?: boolean;
-};
 export const Wrapper = styled.header`
   height: 70px;
   ${apply`w-full bg-white z-50 w-full`};
