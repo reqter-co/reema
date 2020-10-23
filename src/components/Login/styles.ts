@@ -29,40 +29,12 @@ export const Submit = styled.button`
     ${apply`bg-orange-600`};
   }
 `;
-export const TextLine = styled.p`
-  ${apply`text-gray-500`};
-  margin: 25px 10px 0 10px;
-  font-size: 13px;
-  &:before {
-    display: inline-block;
-    content: " ";
-    height: 2px;
-    width: 20%;
-    ${apply`bg-gray-200`};
-    margin-inline-end: 6%;
-    ${tscreen`phone`} {
-      width: 15%;
-    }
-  }
-
-  &:after {
-    display: inline-block;
-    content: " ";
-    height: 2px;
-    width: 20%;
-    margin-inline-start: 6%;
-    ${apply`bg-gray-200`}
-    ${tscreen`phone`} {
-      width: 15%;
-    }
-  }
-`;
 
 export const SocialButtons = styled.div`
   ${apply`flex mt-3`};
 `;
 export const Button = styled.button`
-  ${apply`bg-gray-100 flex-1 text-center py-3 flex items-center justify-center text-lg`};
+  ${apply`bg-gray-100 flex-1 text-center py-3 flex items-center justify-center text-xl rounded border border-gray-200`};
   &:hover {
     ${apply`bg-gray-200`};
   }

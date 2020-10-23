@@ -19,6 +19,7 @@ import {
   FaUser,
   FaCaretDown,
   FaCaretUp,
+  FaGooglePlus,
 } from "react-icons/fa";
 
 const icons: { [key in string]: any } = {
@@ -29,6 +30,7 @@ const icons: { [key in string]: any } = {
   close: <BsX />,
   instagram: <FaInstagram />,
   google: <FaGoogle />,
+  "google-plus": <FaGooglePlus />,
   facebook: <FaFacebook />,
   linkedin: <FaLinkedin />,
   email: <FaEnvelope />,

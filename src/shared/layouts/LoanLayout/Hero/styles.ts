@@ -1,8 +1,8 @@
 import styled from "styled-components";
 export const Wrapper = styled.div`
-  ${apply`w-full bg-secondary-color text-white`}
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  ${apply`w-full bg-green-400 text-white`};
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   height: 300px;
 `;
 export const Container = styled.div`

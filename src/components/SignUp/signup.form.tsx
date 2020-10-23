@@ -3,6 +3,7 @@ import useRouter from "@Hooks/useRouter";
 import Input from "@Shared/components/Form/Input";
 import Icon from "@Shared/components/Icon";
 import Link from "@Shared/components/Link";
+import LineCenterText from "@Shared/components/LineCenterText";
 import useDataPath from "@Hooks/useDataPath";
 import { ISignUpPage } from "@Interfaces/signupPage";
 import { emailPattern } from "@Shared/helper/patterns";
@@ -11,7 +12,6 @@ import {
   Title,
   Description,
   Submit,
-  TextLine,
   SocialButtons,
   Button,
   SignupRow,
@@ -72,7 +72,7 @@ const LoginForm = ({ data }: Props) => {
         hasError={errors.password ? true : false}
       />
       <Submit>{getKeyValue(signupPage, "submittext")}</Submit>
-      <TextLine>{getKeyValue(signupPage, "socialboxtitle")}</TextLine>
+      <LineCenterText label={getKeyValue(signupPage, "socialboxtitle")} />
       <SocialButtons>
         <Button>
           <Icon name="google" />

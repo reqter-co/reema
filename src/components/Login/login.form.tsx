@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "@Hooks/useAuth";
 import Input from "@Shared/components/Form/Input";
 import Icon from "@Shared/components/Icon";
+import LineCenterText from "@Shared/components/LineCenterText";
 import Link from "@Shared/components/Link";
 import useDataPath from "@Hooks/useDataPath";
 import { ILogin } from "@Interfaces/login";
@@ -12,7 +13,6 @@ import {
   Description,
   ForgotPassword,
   Submit,
-  TextLine,
   SocialButtons,
   Button,
   SignupRow,
@@ -68,7 +68,8 @@ const LoginForm = ({ data }: Props) => {
         </ForgotPassword>
       </div>
       <Submit>{getKeyValue(loginPage, "submittext")}</Submit>
-      <TextLine>{getKeyValue(loginPage, "socialboxtitle")}</TextLine>
+      <LineCenterText label={getKeyValue(loginPage, "socialboxtitle")} />
+
       <SocialButtons>
         <Button>
           <Icon name="google" />
