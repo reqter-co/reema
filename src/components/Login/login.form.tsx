@@ -38,6 +38,8 @@ const LoginForm = ({ data }: Props) => {
     console.log(email, password);
     handleLoginSuccess("11-aa-22");
   };
+  // function handleSocialLogin(user: any) {}
+  // function handleSocialLoginFailure(error: any) {}
   return (
     <Content onSubmit={handleSubmit(onSubmit)}>
       <Title>{getKeyValue(loginPage, "formtitle")}</Title>
@@ -67,9 +69,8 @@ const LoginForm = ({ data }: Props) => {
           <Link href="/signup">{getKeyValue(loginPage, "forgotpasstext")}</Link>
         </ForgotPassword>
       </div>
-      <Submit>{getKeyValue(loginPage, "submittext")}</Submit>
+      <Submit type="submit">{getKeyValue(loginPage, "submittext")}</Submit>
       <LineCenterText label={getKeyValue(loginPage, "socialboxtitle")} />
-
       <SocialButtons>
         <Button>
           <Icon name="google" />

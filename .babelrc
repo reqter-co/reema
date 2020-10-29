@@ -1,9 +1,8 @@
 {
   "presets": ["next/babel"],
   "plugins": [
-    "babel-plugin-macros",
-    "babel-plugin-tailwind-string",
     "inline-react-svg",
-    ["styled-components", { "ssr": true }]
+    ["styled-components", { "ssr": true }],
+    "babel-plugin-tailwind-string"
   ]
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import SocialButton from "@Shared/components/SocialButton";
 export const Logo = styled.div`
   ${apply`text-secondary-color font-semibold p-2 text-lg border border-secondary-color text-center rounded-lg`};
   width: 120px;
@@ -33,7 +33,7 @@ export const Submit = styled.button`
 export const SocialButtons = styled.div`
   ${apply`flex mt-3`};
 `;
-export const Button = styled.button`
+export const Button = styled(SocialButton)`
   ${apply`bg-gray-100 flex-1 text-center py-3 flex items-center justify-center text-xl rounded border border-gray-200`};
   &:hover {
     ${apply`bg-gray-200`};

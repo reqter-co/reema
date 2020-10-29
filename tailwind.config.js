@@ -1,10 +1,12 @@
 module.exports = {
-  purge: [
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-    "./src/shared/components/**/*.{js,ts,jsx,tsx}",
-    "./src/shared/layouts/**/*.{js,ts,jsx,tsx}",
-    "./src/styles/*.{js,ts,jsx,tsx,css}",
-  ],
+  purge: {
+    content: [
+      "./src/components/**/*.{js,ts,jsx,tsx}",
+      "./src/shared/components/**/*.{js,ts,jsx,tsx}",
+      "./src/shared/layouts/**/*.{js,ts,jsx,tsx}",
+      "./src/styles/*.{js,ts,jsx,tsx,css}",
+    ],
+  },
   theme: {
     screens: {
       phone: { max: "37.5em" },

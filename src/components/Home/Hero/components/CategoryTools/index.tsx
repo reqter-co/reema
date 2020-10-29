@@ -1,3 +1,9 @@
+import { useMemo } from "react";
+import Icon from "@Shared/components/Icon";
+import { ICategory } from "@Interfaces/category";
+import useCategoryTools from "@Hooks/useCategoryTools";
+import useDataPath from "@Hooks/useDataPath";
+import useLanguage from "@Hooks/useLanguage";
 import {
   Wrapper,
   Header,
@@ -6,11 +12,6 @@ import {
   CloseIcon,
   ToolItem,
 } from "./styles";
-import Icon from "@Shared/components/Icon";
-import { ICategory } from "@Interfaces/category";
-import useCategoryTools from "@Hooks/useCategoryTools";
-import useDataPath from "@Hooks/useDataPath";
-import { useMemo } from "react";
 
 interface IProps {
   category: ICategory;
@@ -18,6 +19,7 @@ interface IProps {
 }
 
 const CategoryTools = ({ category, onClose }: IProps) => {
+  const { currentLang } = useLanguage();
   const { getKeyValue } = useDataPath();
   const { getToolsByCategoryId } = useCategoryTools();
   const tools = useMemo(
@@ -27,6 +29,7 @@ const CategoryTools = ({ category, onClose }: IProps) => {
   function handleClose() {
     onClose();
   }
+  console.log(tools);
   return (
     <Wrapper>
       <Header>
@@ -37,7 +40,13 @@ const CategoryTools = ({ category, onClose }: IProps) => {
       </Header>
       <Content>
         {tools.map((item) => (
-          <ToolItem key={item._id}>{getKeyValue(item, "name")}</ToolItem>
+          <ToolItem
+            href={"/" + currentLang + "/tools/interest-calc"}
+            target="_blank"
+            key={item._id}
+          >
+            {getKeyValue(item, "name")}
+          </ToolItem>
         ))}
       </Content>
     </Wrapper>

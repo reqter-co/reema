@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const Wrapper = styled.div`
   ${apply`flex flex-col bg-white shadow rounded-lg mt-10`}
   ${tscreen`tab-land`} {
@@ -23,7 +22,7 @@ export const CategoryTitle = styled.h1`
 export const CloseIcon = styled.div`
   ${apply`text-4xl cursor-pointer`}
 `;
-export const ToolItem = styled.div`
+export const ToolItem = styled.a`
   ${apply`cursor-pointer mb-3`};
   &:hover {
     ${apply`underline`};

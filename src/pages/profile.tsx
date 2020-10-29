@@ -3,9 +3,9 @@ import { GetStaticProps, NextPage } from "next";
 import { defaultMetaTags } from "@Core/constants";
 import Layout from "@Shared/layouts/MainLayout";
 import Content from "@Components/Profile";
-import { getAppLocales, getProfilePageData } from "@Core/api";
+import { getProfilePageData } from "@Core/api";
 import { ProfileProvider } from "@Contexts/profile/profile.provider";
-import withLogin from "../../hoc/withLogin";
+import withLogin from "../hoc/withLogin";
 
 interface IProps {
   headerData: any;
@@ -28,9 +28,10 @@ const Profile: NextPage<IProps> = ({ headerData, footerData }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { headerData, footerData } = await getProfilePageData();
+    const { appLocales, headerData, footerData } = await getProfilePageData();
     return {
       props: {
+        appLocales,
         headerData,
         footerData,
       },
@@ -44,14 +45,12 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   }
 };
-export async function getStaticPaths() {
-  const locales = await getAppLocales();
-  const langs =
-    locales && locales.length ? locales : [{ locale: "en" }, { locale: "fa" }];
-  return {
-    paths: langs.map((item: any) => `/${item.locale}/profile`),
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   const locales = await getAppLocales();
+//   return {
+//     paths: locales.map((item: any) => `/${item.locale}/profile`),
+//     fallback: "blocking",
+//   };
+// }
 
 export default withLogin<IProps>(Profile);

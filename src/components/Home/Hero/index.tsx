@@ -1,14 +1,13 @@
 import Categories from "./components/Categories";
 import { Wrapper, Section, Content, Title, Description } from "./styles";
 import useLanding from "@Hooks/useLanding";
-import useTranslation from "@Hooks/useTranslation";
+import useLanguage from "@Hooks/useLanguage";
 import useDataPath from "@Hooks/useDataPath";
 import useMediaUtils from "@Hooks/useMediaUtils";
 
-const List = () => {
-  
+const Hero = () => {
   const { landingPage } = useLanding();
-  const { direction } = useTranslation();
+  const { direction } = useLanguage();
   const { getKeyValue } = useDataPath();
   const { getMediaValue } = useMediaUtils();
 
@@ -30,4 +29,4 @@ const List = () => {
   );
 };
 
-export default List;
+export default Hero;

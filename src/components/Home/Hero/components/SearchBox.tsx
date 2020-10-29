@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import CategoryToolsSearch from "./CategoryToolsSearch";
 import { SearchWrapper, Input, SearchButton } from "../styles";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
-import useTranslation from "@Hooks/useTranslation";
+import useLanguage from "@Hooks/useLanguage";
 import useClickOutside from "@Hooks/useClickOutside";
 import useLanding from "@Hooks/useLanding";
 import useDataPath from "@Hooks/useDataPath";
@@ -14,7 +14,7 @@ const SearchBox = ({ onShowedToolsList }: Props) => {
   const searchBoxRef = useRef<HTMLDivElement>(null);
   const [isOpenSearchModal, toggleSearchModal] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const { direction } = useTranslation();
+  const { direction } = useLanguage();
   const { landingPage } = useLanding();
   const { getKeyValue } = useDataPath();
 
@@ -27,7 +27,6 @@ const SearchBox = ({ onShowedToolsList }: Props) => {
       toggleSearchModal(true);
     }
   }
-
   useClickOutside(searchBoxRef, () => {
     if (isOpenSearchModal) {
       toggleSearchModal(false);

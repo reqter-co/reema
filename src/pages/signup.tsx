@@ -1,19 +1,19 @@
 import { useMemo } from "react";
 import { NextPage, GetStaticProps } from "next";
 import AuthLayout from "@Shared/layouts/AuthLayout";
-import LoginForm from "@Components/Login/login.form";
+import SignUpForm from "@Components/SignUp/signup.form";
 import { MetaTags, PageType, RobotsContent } from "@Interfaces/meta-tags";
 import { concatenateStrings } from "@Shared/helper";
-import { getLoginPageData, getAppLocales } from "@Core/api";
-import { ILogin } from "@Interfaces/login";
+import { getSignUpPageData } from "@Core/api";
+import { ISignUpPage } from "@Interfaces/signupPage";
 import useDataPath from "@Hooks/useDataPath";
 import useMediaUtils from "@Hooks/useMediaUtils";
 
-interface ILoginPageProps {
-  loginPage: ILogin;
+interface ISignUpPageProps {
+  signupPage: ISignUpPage;
 }
 
-const Login: NextPage<ILoginPageProps> = ({ loginPage }) => {
+const SignUp: NextPage<ISignUpPageProps> = ({ signupPage }) => {
   const { getKeyValue } = useDataPath();
   const { getMediaValue } = useMediaUtils();
   const metaTags: MetaTags = useMemo(() => {
@@ -21,43 +21,42 @@ const Login: NextPage<ILoginPageProps> = ({ loginPage }) => {
       logo:
         "https://blog.mailrelay.com/wp-content/uploads/2018/03/que-es-un-blog-1.png",
       canonical: `${process.env.DOMAIN_PUBLIC}`,
-      title: getKeyValue(loginPage, "name"),
-      description: getKeyValue(loginPage, "infodescripton"),
+      title: getKeyValue(signupPage, "name"),
+      description: getKeyValue(signupPage, "infodescripton"),
       image:
         "https://blog.mailrelay.com/wp-content/uploads/2018/03/que-es-un-blog-1.png",
       robots: concatenateStrings(RobotsContent.index, RobotsContent.follow),
       type: PageType.website,
     };
-  }, [loginPage]);
+  }, [signupPage]);
 
   return (
     <AuthLayout
       metaTags={metaTags}
-      title={getKeyValue(loginPage, "infotitle")}
-      description={getKeyValue(loginPage, "infodescripton")}
-      image={getMediaValue(getKeyValue(loginPage, "infoimage"), "image")}
-      formRender={() => <LoginForm data={loginPage} />}
+      title={getKeyValue(signupPage, "infotitle")}
+      description={getKeyValue(signupPage, "infodescripton")}
+      image={getMediaValue(getKeyValue(signupPage, "infoimage"), "image")}
+      formRender={() => <SignUpForm data={signupPage} />}
     />
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const loginPage = await getLoginPageData();
+  const { appLocales, signupPage } = await getSignUpPageData();
   return {
     props: {
-      loginPage,
+      appLocales,
+      signupPage,
     },
     revalidate: 60,
   };
 };
-export async function getStaticPaths() {
-  const locales = await getAppLocales();
-  const langs =
-    locales && locales.length ? locales : [{ locale: "en" }, { locale: "fa" }];
-  return {
-    paths: langs.map((item: any) => `/${item.locale}/login`),
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   const locales = await getAppLocales();
+//   return {
+//     paths: locales.map((item: any) => `/${item.locale}/signup`),
+//     fallback: "blocking",
+//   };
+// }
 
-export default Login;
+export default SignUp;

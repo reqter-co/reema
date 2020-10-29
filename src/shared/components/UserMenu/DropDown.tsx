@@ -1,7 +1,7 @@
 import {  useRef } from "react";
 import { mutate } from "swr";
 import { MenuWrapper, MenuIcon, MenuItem } from "./styles";
-import useTranslation from "@Hooks/useTranslation";
+import useLanguage from "@Hooks/useLanguage";
 import useClickOutside from "@Hooks/useClickOutside";
 import useRouter from "@Hooks/useRouter";
 import useAuth from "@Hooks/useAuth";
@@ -16,7 +16,7 @@ const UserMenu = ({
   // const { mutate } = useUser();
   const { logout } = useAuth();
   const { push } = useRouter();
-  const { direction } = useTranslation();
+  const { direction } = useLanguage();
   const menuRef = useRef<HTMLUListElement>(null);
   useClickOutside(menuRef, () => {
     onClickOutside();

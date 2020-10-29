@@ -32,7 +32,7 @@ const HeaderMenu = ({ data }: IProps): JSX.Element => {
   }, []);
 
   const checkIsTransparent = (): boolean => {
-    return router.asPath === `/${router.query.lang}`;
+    return router.pathname === `/`;
   };
   return (
     <>

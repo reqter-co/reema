@@ -1,15 +1,17 @@
 import { useRouter } from "next/router";
+import useLanguage from "@Hooks/useLanguage";
 const extendedUseRouter = () => {
   const router = useRouter();
-  const currentLang = router.query.lang;
+  const { currentLang } = useLanguage();
+  // const currentLang = router.query.lang;
   return {
     query: router.query,
-    currentRoute: router.pathname.split("/[lang]")[1],
+    currentRoute: router.pathname,
     push(url: string) {
       if (!url || url == "/home") {
-        router.push(`/${router.query.lang}`);
+        router.push(`/${currentLang}`);
       } else {
-        router.push(`/${router.query.lang}${url}`);
+        router.push(`/${currentLang}${url}`);
       }
     },
     pushWithParams(obj: {

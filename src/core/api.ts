@@ -8,7 +8,7 @@ import { ICategory } from "@Interfaces/category";
 import { ITools } from "@Interfaces/tools";
 import { IHeader } from "@Interfaces/header";
 import { IFooter } from "@Interfaces/footer";
-//=======================================
+//============================================================
 let token: string = "";
 let result: any = {};
 const saveToken = (t: string) => {
@@ -17,6 +17,7 @@ const saveToken = (t: string) => {
 const saveResult = (key: string, value: any) => {
   result[key] = value;
 };
+// =====================================================
 export const getToken = async () => {
   const response = await post<{ access_token: string }>(
     urls.token,
@@ -95,6 +96,46 @@ const getLandingData = async () => {
   }
   return [];
 };
+const getLoginData = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<ILogin[]>(urls.login, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    const obj =
+      response.parsedBody && response.parsedBody.length
+        ? response.parsedBody[0]
+        : {};
+    return obj;
+  }
+  return [];
+};
+const getSignUpData = async () => {
+  if (!token) {
+    await getToken();
+  }
+  const response = await get<ISignUpPage[]>(urls.signUpPage, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: "Bearer " + token,
+    },
+  });
+  if (response && response.parsedBody) {
+    const obj =
+      response.parsedBody && response.parsedBody.length
+        ? response.parsedBody[0]
+        : {};
+    return obj;
+  }
+  return [];
+};
 const getAppLocales = async () => {
   if (result && result["locales"]) {
     return result["locales"];
@@ -109,8 +150,12 @@ const getAppLocales = async () => {
     },
   });
   if (response && response.parsedBody) {
-    saveResult("locales", response.parsedBody);
-    return response.parsedBody;
+    const langs =
+      response.parsedBody && response.parsedBody.length
+        ? response.parsedBody
+        : [{ locale: "en" }, { locale: "fa" }];
+    saveResult("locales", langs);
+    return langs;
   }
   return [];
 };
@@ -149,12 +194,14 @@ const getLandingPageData = async () => {
     await getToken();
   }
   const [
+    appLocales,
     headerData,
     footerData,
     landingPageResponse,
     categoriesResponse,
     toolsResponse,
   ] = await Promise.all([
+    getAppLocales(),
     getHeaderData(),
     getFooterData(),
     getLandingData(),
@@ -162,6 +209,7 @@ const getLandingPageData = async () => {
     getTools(),
   ]);
   return {
+    appLocales,
     headerData,
     footerData,
     landingPageResponse,
@@ -173,52 +221,36 @@ const getLoginPageData = async () => {
   if (!token) {
     await getToken();
   }
-  const response = await get<ILogin[]>(urls.login, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: "Bearer " + token,
-    },
-  });
-  if (response && response.parsedBody) {
-    const obj =
-      response.parsedBody && response.parsedBody.length
-        ? response.parsedBody[0]
-        : {};
-    return obj;
-  }
-  return [];
+  const [appLocales, loginPage] = await Promise.all([
+    getAppLocales(),
+    getLoginData(),
+  ]);
+
+  return { appLocales, loginPage };
 };
 const getSignUpPageData = async () => {
   if (!token) {
     await getToken();
   }
-  const response = await get<ISignUpPage[]>(urls.signUpPage, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: "Bearer " + token,
-    },
-  });
-  if (response && response.parsedBody) {
-    const obj =
-      response.parsedBody && response.parsedBody.length
-        ? response.parsedBody[0]
-        : {};
-    return obj;
-  }
-  return [];
+  const [appLocales, signupPage] = await Promise.all([
+    getAppLocales(),
+    getSignUpData(),
+  ]);
+
+  return { appLocales, signupPage };
 };
 
 const getProfilePageData = async () => {
   if (!token) {
     await getToken();
   }
-  const [headerData, footerData] = await Promise.all([
+  const [appLocales, headerData, footerData] = await Promise.all([
+    getAppLocales(),
     getHeaderData(),
     getFooterData(),
   ]);
   return {
+    appLocales,
     headerData,
     footerData,
   };

@@ -3,7 +3,7 @@ import useSWR from "swr";
 // const fetcher = (url: string) => fetch(url).then((res) => res.json());
 // const end_point_url = '/'
 
-import userFetcher from "@Core/api-user";
+import userFetcher from "@Core/mock/api-user";
 export default function useUser() {
   //   const { data, mutate, error } = useSWR("/api/user.json", fetcher);
   const { data, mutate, error } = useSWR("api_user", userFetcher);

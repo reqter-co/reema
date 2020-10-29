@@ -1,11 +1,11 @@
 import { FC } from "react";
 import Link from "next/link";
-import useTranslation from "@Hooks/useTranslation";
+import useLanguage from "@Hooks/useLanguage";
 interface IProps {
   href: string;
 }
 const LinkCMP: FC<IProps> = ({ href, children, ...rest }) => {
-  const { currentLang } = useTranslation();
+  const { currentLang } = useLanguage()
   return (
     <Link href={`/${currentLang}${href}`} {...rest}>
       {children}
