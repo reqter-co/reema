@@ -1,39 +1,43 @@
 import { useRouter } from "next/router";
-import useLanguage from "@Hooks/useLanguage";
+
+// localize next/router to be more easily to use
+// push - push with params - replace
 const extendedUseRouter = () => {
   const router = useRouter();
-  const { currentLang } = useLanguage();
-  // const currentLang = router.query.lang;
+  // push to single route name
+  function push(path: string) {
+    let url = "/";
+    if (path && path !== "/home") {
+      url = path;
+    }
+    router.push(url);
+  }
+  // push to a route with query parameters
+  function pushWithParams(path: {
+    pathName: string;
+    query: { [key in string]: string };
+  }) {
+    const pObj = {
+      pathName:
+        path.pathName && path.pathName !== "/home" ? path.pathName : "/",
+      query: path.query,
+    };
+    router.push(pObj);
+  }
+  // replace a route without backing to previous route
+  function replace(path: string) {
+    let url = "/";
+    if (path && path !== "/home") {
+      url = path;
+    }
+    router.replace(url);
+  }
   return {
     query: router.query,
     currentRoute: router.pathname,
-    push(url: string) {
-      if (!url || url == "/home") {
-        router.push(`/${currentLang}`);
-      } else {
-        router.push(`/${currentLang}${url}`);
-      }
-    },
-    pushWithParams(obj: {
-      pathName: string;
-      query: { [key in string]: string };
-    }) {
-      const pObj = {
-        pathName:
-          !obj.pathName || obj.pathName === "/home"
-            ? `/${currentLang}`
-            : `/${currentLang}` + obj.pathName,
-        query: obj.query,
-      };
-      router.push(pObj);
-    },
-    replace(url: string) {
-      if (!url || url == "/home") {
-        router.replace(`/${router.query.lang}`);
-      } else {
-        router.replace(`/${router.query.lang}${url}`);
-      }
-    },
+    push,
+    pushWithParams,
+    replace,
   };
 };
 

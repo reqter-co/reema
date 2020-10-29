@@ -1,9 +1,6 @@
 module.exports = {
   i18n: {
     locales: ["en", "fa"],
-    defaultLocale: "en",
-  },
-  async rewrites() {
-    return [{ source: "/", destination: "/en" }];
+    defaultLocale: process.env.NEXT_PUBLIC_DEFAULT_LOCALE || "en",
   },
 };

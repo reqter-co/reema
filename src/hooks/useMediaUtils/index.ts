@@ -2,7 +2,7 @@ import { urls } from "@Core/constants";
 import useLanguage from "@Hooks/useLanguage";
 
 const useMediaUtils = () => {
-  const { currentLang, defaultLocale } = useLanguage();
+  const { currentLocale, defaultLocale } = useLanguage();
   const makeImageUrl = (
     url: string,
     width?: string | number,
@@ -33,8 +33,8 @@ const useMediaUtils = () => {
     if (media && media.length && type === "image") {
       const firstImgObj = media[0] as { [key: string]: string };
       const imageUrl =
-        currentLang && firstImgObj[currentLang]
-          ? firstImgObj[currentLang]
+        currentLocale && firstImgObj[currentLocale]
+          ? firstImgObj[currentLocale]
           : defaultLocale
           ? firstImgObj[defaultLocale]
           : "";

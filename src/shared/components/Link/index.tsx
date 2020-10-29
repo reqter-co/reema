@@ -1,16 +1,14 @@
 import { FC } from "react";
 import Link from "next/link";
-import useLanguage from "@Hooks/useLanguage";
 interface IProps {
   href: string;
 }
-const LinkCMP: FC<IProps> = ({ href, children, ...rest }) => {
-  const { currentLang } = useLanguage()
+const ExtendedLink: FC<IProps> = ({ href, children, ...rest }) => {
   return (
-    <Link href={`/${currentLang}${href}`} {...rest}>
+    <Link href={href} {...rest}>
       {children}
     </Link>
   );
 };
 
-export default LinkCMP;
+export default ExtendedLink;
