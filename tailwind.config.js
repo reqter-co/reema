@@ -1,5 +1,9 @@
 module.exports = {
+  future: {
+    purgeLayersByDefault: true,
+  },
   purge: {
+    layers: ['utilities'],
     content: [
       "./src/components/**/*.{js,ts,jsx,tsx}",
       "./src/shared/components/**/*.{js,ts,jsx,tsx}",
