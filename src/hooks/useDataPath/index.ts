@@ -1,13 +1,14 @@
-import { useRouter } from "next/router";
+import useLanguage from "@Hooks/useLanguage";
+
 const useDataPath = () => {
-  const { query } = useRouter();
-  const currentLang = query.lang as string;
-  // function getValue<T extends object, U extends string & keyof T>(
+  const { defaultLocale, currentLang } = useLanguage();
+
+  // function getKeyValue<T extends object, U extends string & keyof T>(
   //   object: T,
   //   key: U,
   //   defaultValue: string | number = ""
   // ) {
-  function getValue(
+  function getKeyValue(
     object: any,
     key: string,
     defaultValue: string | number = ""
@@ -33,7 +34,9 @@ const useDataPath = () => {
         ? val
         : typeof val === "object"
         ? val[currentLang]
-          ? val[currentLang]
+          ? currentLang && val[currentLang]
+          : defaultLocale
+          ? val[defaultLocale]
           : defaultValue
         : val
       : defaultValue;
@@ -41,7 +44,7 @@ const useDataPath = () => {
     return r;
   }
   return {
-    getValue,
+    getKeyValue,
   };
 };
 

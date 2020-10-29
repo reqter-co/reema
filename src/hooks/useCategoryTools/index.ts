@@ -1,10 +1,10 @@
-import useGlobalState from "@Hooks/useGlobal/useGlobalState";
+import useLanding from "@Hooks/useLanding";
 import useDataPath from "@Hooks/useDataPath";
 import { ITools } from "@Interfaces/tools";
 
 const useCategoryTools = () => {
-  const { categories, tools } = useGlobalState();
-  const { getValue } = useDataPath();
+  const { categories, tools } = useLanding();
+  const { getKeyValue } = useDataPath();
   const getCategories = () => {
     return categories;
   };
@@ -16,7 +16,7 @@ const useCategoryTools = () => {
   const getToolsByCategoryName = (searchText: string): ITools[] => {
     return tools
       ? tools.filter((item: ITools) => {
-          const name = getValue(item, "name") as string;
+          const name = getKeyValue(item, "name") as string;
           return name?.toLowerCase().includes(searchText.toLowerCase());
         })
       : [];

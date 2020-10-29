@@ -12,5 +12,4 @@
 @tailwind utilities;
 body {
   @apply font-vazir p-0 m-0;
-  background-color: whitesmoke;
 }

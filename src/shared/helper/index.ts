@@ -7,3 +7,4 @@ export const getHref = (slug: string) => ({
 export function concatenateStrings(...args: string[]): string {
   return args.join(",");
 }
+
