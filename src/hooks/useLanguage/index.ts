@@ -4,13 +4,26 @@ const useLanguage = () => {
   const { locale, defaultLocale } = useRouter();
   const appLocales = useLanguageState("appLocales");
 
-  const q = locale;
   return {
-    direction: q === "fa" || q === "ar" ? "rtl" : "ltr",
-    currentLang: q as string,
+    direction: isRTL(locale) ? "rtl" : "ltr",
+    currentLocale: locale,
     defaultLocale,
     appLocales,
   };
 };
 
 export default useLanguage;
+
+const rtlLangs = [
+  "fa",
+  "ar",
+  "Aramaic",
+  "Azeri",
+  "Dhivehi/Maldivian",
+  "Hebrew",
+  "Kurdish (Sorani)",
+  "Urdu",
+];
+export const isRTL = (lang?: string): boolean => {
+  return lang ? rtlLangs.includes(lang) : false;
+};

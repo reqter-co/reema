@@ -1,7 +1,7 @@
 import useLanguage from "@Hooks/useLanguage";
 
 const useDataPath = () => {
-  const { defaultLocale, currentLang } = useLanguage();
+  const { defaultLocale, currentLocale } = useLanguage();
 
   // function getKeyValue<T extends object, U extends string & keyof T>(
   //   object: T,
@@ -33,9 +33,9 @@ const useDataPath = () => {
       ? Array.isArray(val)
         ? val
         : typeof val === "object"
-        ? val[currentLang]
-          ? currentLang && val[currentLang]
-          : defaultLocale
+        ? currentLocale && val[currentLocale]
+          ? val[currentLocale]
+          : defaultLocale && val[defaultLocale]
           ? val[defaultLocale]
           : defaultValue
         : val

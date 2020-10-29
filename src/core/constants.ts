@@ -14,7 +14,7 @@ export const defaultMetaTags: MetaTags = {
   type: PageType.website,
 };
 
-export const clientid = "3f33b7b9-3826-475a-993e-c1b6c12b41bc";
+export const clientid = process.env.NEXT_PUBLIC_CLIENT_ID || "";
 const baseUrl = "https://requester.reqter.com";
 const listLeanUrl = "/api/v1/lists/lean";
 export const urls = {

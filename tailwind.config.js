@@ -1,16 +1,17 @@
+// {
+//   layers: ['utilities'],
+//   content: [
+//     "./src/components/**/*.{js,ts,jsx,tsx}",
+//     "./src/shared/components/**/*.{js,ts,jsx,tsx}",
+//     "./src/shared/layouts/**/*.{js,ts,jsx,tsx}",
+//     "./src/styles/*.{js,ts,jsx,tsx,css}",
+//   ],
+// }
 module.exports = {
   future: {
     purgeLayersByDefault: true,
   },
-  purge: {
-    layers: ['utilities'],
-    content: [
-      "./src/components/**/*.{js,ts,jsx,tsx}",
-      "./src/shared/components/**/*.{js,ts,jsx,tsx}",
-      "./src/shared/layouts/**/*.{js,ts,jsx,tsx}",
-      "./src/styles/*.{js,ts,jsx,tsx,css}",
-    ],
-  },
+  purge: [],
   theme: {
     screens: {
       phone: { max: "37.5em" },
