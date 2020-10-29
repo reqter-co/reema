@@ -10,5 +10,5 @@ export const Wrapper = styled.div<Props>`
   ${apply`py-20 bg-cover`}
 `;
 export const Content = styled.div`
-  ${apply`flex flex-col max-w-5xl m-auto`}
+  ${apply`flex flex-col max-w-6xl m-auto`}
 `;

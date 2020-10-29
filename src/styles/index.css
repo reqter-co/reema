@@ -1,10 +1,15 @@
 @tailwind base;
+@font-face {
+  font-family: Vazir;
+  src: url("/fonts/vazir/Vazir-WOL.eot");
+  src: url("/fonts/vazir/Vazir-WOL.eot?#iefix") format("Vazir-opentype"),
+    url("/fonts/vazir/Vazir-WOL.woff") format("woff"),
+    url("/fonts/vazir/Vazir-WOL.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 @tailwind components;
 @tailwind utilities;
-
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 body {
-  padding: 0;
-  margin: 0;
-  background-color: whitesmoke;
+  @apply font-vazir p-0 m-0;
 }

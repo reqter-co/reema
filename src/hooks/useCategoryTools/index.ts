@@ -1,23 +1,27 @@
-import { data as categories } from "@Core/categoriesData";
-import { data as tools } from "@Core/categoryTools";
-import { Tool } from "@Interfaces/tool";
+import useLanding from "@Hooks/useLanding";
+import useDataPath from "@Hooks/useDataPath";
+import { ITools } from "@Interfaces/tools";
 
 const useCategoryTools = () => {
+  const { categories, tools } = useLanding();
+  const { getKeyValue } = useDataPath();
   const getCategories = () => {
     return categories;
   };
-  const getCategoryToolsById = (categoryId: string): Tool[] => {
-    return tools ? tools.filter((item) => item.categoryId === categoryId) : [];
-  };
-  const getCategoryToolsByName = (searchText: string): Tool[] => {
-    const data = tools
-      ? tools.filter((item) =>
-          item.title.toLowerCase().includes(searchText.toLowerCase())
-        )
+  const getToolsByCategoryId = (categoryId: string): ITools[] => {
+    return tools
+      ? tools.filter((item: ITools) => item.categoryid._id === categoryId)
       : [];
-    return data;
   };
-  return { getCategories, getCategoryToolsById, getCategoryToolsByName };
+  const getToolsByCategoryName = (searchText: string): ITools[] => {
+    return tools
+      ? tools.filter((item: ITools) => {
+          const name = getKeyValue(item, "name") as string;
+          return name?.toLowerCase().includes(searchText.toLowerCase());
+        })
+      : [];
+  };
+  return { getCategories, getToolsByCategoryId, getToolsByCategoryName };
 };
 
 export default useCategoryTools;
